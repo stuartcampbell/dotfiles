@@ -1,0 +1,13 @@
+sourceDir = "{{ .chezmoi.sourceDir }}"
+{{- if (env "CODESPACES") -}}
+[data]
+  codespaces = true
+  email = "stuart@stuartcampbell.me"
+  name = "Stuart Campbell"
+{{- else -}}
+{{- $email := promptString "email" -}}
+[data]
+  codespaces = false
+  email = {{ $email }}
+  name = "Stuart Campbell"
+{{- end }}
