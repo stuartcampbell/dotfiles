@@ -1,0 +1,13 @@
+Host github.com
+	HostName github.com
+	User git
+	IdentityFile ~/.ssh/id_stuartcampbell@github
+
+HOST *.fedoraproject.org fedorapeople.org *.fedorahosted.org
+	IdentityFile ~/.ssh/id_rsa_fedora
+	User sic
+
+HOST *.sdcc.bnl.gov
+	IdentityFile ~/.ssh/id_rsa_sdcc_bnl  
+
+
