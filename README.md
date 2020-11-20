@@ -2,7 +2,7 @@
 
 ## To setup a new machine
 
-1. Install 1Password pre-requisites
+1. Install 1Password and Chezmoi 
  https://cache.agilebits.com/dist/1P/op/pkg/v1.7.0/op_darwin_amd64_v1.7.0.pkg
  https://cache.agilebits.com/dist/1P/op/pkg/v1.7.0/op_linux_amd64_v1.7.0.zip
  https://cache.agilebits.com/dist/1P/op/pkg/v1.7.0/op_linux_arm_v1.7.0.zip
