@@ -10,4 +10,10 @@ HOST *.fedoraproject.org fedorapeople.org *.fedorahosted.org
 HOST *.sdcc.bnl.gov
 	IdentityFile ~/.ssh/id_rsa_sdcc_bnl  
 
-
+Host try
+    User ec2-user
+    Hostname try.nsls2.bnl.gov
+    # Hostname 52.70.105.68
+    ForwardAgent yes
+    #ProxyCommand ssh -qY ssh.bnl.gov -W %h:%p
+    #LocalForward 13001 localhost:4000
