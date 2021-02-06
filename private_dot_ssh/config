@@ -1,3 +1,13 @@
+Host *
+	ForwardAgent yes
+	GSSAPIAuthentication yes
+	PreferredAuthentications gssapi-with-mic,publickey,keyboard-interactive,password
+	ControlMaster auto
+	ControlPath ~/.ssh/master-%r@%h:%p
+	ServerAliveInterval 5
+
+include config.d/*
+
 Host github.com
 	HostName github.com
 	User git
@@ -13,7 +23,6 @@ HOST *.sdcc.bnl.gov
 Host try
     User ec2-user
     Hostname try.nsls2.bnl.gov
-    # Hostname 52.70.105.68
     ForwardAgent yes
     #ProxyCommand ssh -qY ssh.bnl.gov -W %h:%p
     #LocalForward 13001 localhost:4000
