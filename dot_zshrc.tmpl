@@ -11,6 +11,11 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 [ -d $HOME/.cargo/bin ] && export PATH=$HOME/.cargo/bin:$PATH
 [ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
 
+{{ if (eq .chezmoi.os "darwin") }}
+# This is only needed on macOS to tell Kerberos where to get the ticket cache from
+export KRB5CCNAME=KCM:`id -u`
+{{ end }}
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
