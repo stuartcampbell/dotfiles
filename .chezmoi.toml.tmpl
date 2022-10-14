@@ -1,0 +1,50 @@
+{{/* feature tags */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $transient := false -}}{{/* true if this machine is temporary, e.g. a cloud or VM instance */}}
+{{- $bnl := false -}}{{/* true if this machine should have BNL config */}}
+{{- $personal := false -}}{{/* true if this machine is a personal one */}}
+{{- "" -}}
+
+{{- $osID := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{/* detect GitHub codespaces, VSCode remote containers, Docker containers, Multipass VMs, and Vagrant boxes */}}
+{{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "ubuntu" "vagrant" "vscode") -}}
+{{-   $transient = true -}}
+{{-   $headless = true -}}
+{{- end -}}
+
+{{- $hostname := .chezmoi.hostname -}}
+
+{{- if not $transient -}}
+{{-   if eq $hostname "blade15" "BLADE15" -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "viper" -}}
+{{-     $bnl = true -}}
+{{-   else if eq $hostname "blade" -}}
+{{-     $personal = true -}}
+{{-   else -}}
+{{-     $transient = false -}}
+{{-   end -}}
+{{- end -}}
+
+
+{{- $name := "Stuart Campbell" -}}
+{{- $email := "" -}}
+{{- if $bnl -}}
+{{-   $email = "scampbell@bnl.gov" -}}
+{{- else -}}
+{{-   $email = "stuart@stuartcampbell.me" -}}
+{{- end -}}
+
+[data]
+    docker = {{ $docker }}
+    transient = {{ $transient }}
+    headless = {{ $headless }}
+    hostname = {{ $hostname | quote }}
+    personal = {{ $personal }}
+    onepasswordAccount = ""
+    bnl = {{ $bnl }}
+    osid = {{ $osID | quote }}
