@@ -1,0 +1,26 @@
+HOST *.fedoraproject.org fedorapeople.org *.fedorahosted.org
+	IdentityFile ~/.ssh/id_rsa_fedora
+	User sic
+
+Host *
+    ForwardAgent yes
+    IdentitiesOnly = yes
+    # ControlMaster config
+    ControlMaster auto
+    ControlPath ~/.ssh/controlmasters/%r@%h:%p.socket
+    # If the initial and all sessions exit, keep the ControlMaster
+    # open for 300 seconds before closing.
+    ControlPersist 300s
+
+{{ if eq .chezmoi.osRelease.id "fedora" "nobara" -}}
+    PKCS11Provider /usr/lib64/pkcs11/opensc-pkcs11.so
+{{ end -}}
+
+{{ if eq .chezmoi.osRelease.id "debian" "ubuntu" -}}
+    PKCS11Provider /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+{{ end -}}
+
+{{ if eq .chezmoi.os "darwin" -}}
+    PKCS11Provider /usr/local/lib/opensc-pkcs11.so
+{{ end -}}
+
