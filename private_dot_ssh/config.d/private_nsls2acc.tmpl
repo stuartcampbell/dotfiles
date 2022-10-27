@@ -1,6 +1,6 @@
 {{- $jump1 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2acc-proxy-1") -}} 
 {{- $jump2 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2acc-proxy-2") -}} 
-{{- $port := trim (onepasswordRead "op://Work/BNL Internal Details/SOCKS Proxy Ports/nsls2acc-socks-port") -}} 
+{{- $port := trim (onepasswordRead "op://Work/BNL Internal Details/Ports/nsls2acc-socks-port") -}} 
 {{ "" }}
 
 Host ssh-acc.nsls2.bnl.gov
