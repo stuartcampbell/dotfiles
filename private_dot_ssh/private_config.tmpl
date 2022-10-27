@@ -5,10 +5,10 @@ HOST *.fedoraproject.org fedorapeople.org *.fedorahosted.org
 	IdentityAgent ~/.1password/agent.sock
 
 Host *
-    ServerKeepAlive 5
+    ServerAliveInterval 5
     # ControlMaster config
     ControlMaster auto
-    ControlPath ~/.ssh/controlmasters/%r@%h:%p.socket
+    ControlPath ~/.ssh/%r@%h:%p
     # If the initial and all sessions exit, keep the ControlMaster
     # open for 300 seconds before closing.
     ControlPersist 300s
