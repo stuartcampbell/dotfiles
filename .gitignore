@@ -1,3 +1,4 @@
 *.deb
 *.rpm
 *.tar.gz
+*.swp
