@@ -1,3 +1,13 @@
+{{ if .work -}}
+    Include config.d/bnl
+    Include config.d/nsls2acc
+    Include config.d/n2sn
+{{- end }}
+{{ if .personal -}}
+    Include config.d/home
+{{- end -}}
+{{ "" }}
+
 HOST *.fedoraproject.org fedorapeople.org *.fedorahosted.org
 	User sic
 	IdentityFile ~/.ssh/id_rsa_fedora.pub
