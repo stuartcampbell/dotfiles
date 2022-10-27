@@ -4,7 +4,9 @@ Host ssh.bnl.gov
 	ForwardAgent yes
 	PubKeyAuthentication yes
 
-Match Host {{- onepasswordRead "op://Work/BNL Internal Details/Computers/Campus Workstation" -}} !exec "host -W 1 %h"
+{{ $campus_workstation := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/Campus Workstation") }} 
+
+Match Host {{ $campus_workstation }} !exec "host -W 1 %h"
 	ProxyJump ssh.bnl.gov
-Host {{- onepasswordRead "op://Work/BNL Internal Details/Computers/Campus Workstation"  -}}
-	Hostname {{- onepasswordRead "op://Work/BNL Internal Details/Computers/Campus Workstation" -}}
+Host {{ $campus_workstation }}
+	Hostname {{ $campus_workstation }}
