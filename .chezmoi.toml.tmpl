@@ -1,13 +1,22 @@
 {{/* feature tags */}}
-{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
-{{- $transient := false -}}{{/* true if this machine is temporary, e.g. a cloud or VM instance */}}
-{{- $bnl := false -}}{{/* true if this machine should have BNL config */}}
-{{- $personal := false -}}{{/* true if this machine is a personal one */}}
+{{- $headless := false -}}  {{/* true if this machine does not have a screen and keyboard */}}
+{{- $transient := false -}} {{/* true if this machine is temporary, e.g. a cloud or VM instance */}}
+{{- $wsl := false -}}       {{/* true if running within Windows Subsystem for Linux (WSL) */}}
+{{- $work := false -}}      {{/* true if this machine should have work config */}}
+{{- $personal := false -}}  {{/* true if this machine should have personal secrets and config */}}
+{{- $shared := false -}}    {{/* true if this is a shared machine */}}
 {{- "" -}}
 
 {{- $osID := .chezmoi.os -}}
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{/* Detect Windows Subsystem for Linux (WSL) */}}
+{{- if eq .chezmoi.os "linux" -}}
+{{-   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+{{-    $wsl = true -}}
+{{-   end -}}
 {{- end -}}
 
 {{/* detect GitHub codespaces, VSCode remote containers, Docker containers, Multipass VMs, and Vagrant boxes */}}
@@ -17,14 +26,36 @@
 {{- end -}}
 
 {{- $hostname := .chezmoi.hostname -}}
+{{- $fqdn := .chezmoi.fqdnHostname -}}
+
+{{/* On macOS the hostname can change depending on the network, this gives a more stable result */}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $computerName := output "scutil" "--get" "ComputerName" | trim -}}
+{{-   if eq $computerName "Stuart’s MacBook Pro" -}}
+{{-     $hostname = "stuarts-mbp" -}}
+{{-   else -}}
+{{-     $hostname = $computerName -}}
+{{-   end -}}
+{{- end -}}
+
 
 {{- if not $transient -}}
-{{-   if eq $hostname "blade15" "BLADE15" -}}
+{{-   if eq $hostname "blade15" "BLADE15" "blade" -}}
 {{-     $personal = true -}}
+{{-   else if contains ".nsls2.bnl.local" $fqdn -}}
+{{-     $work = true -}}
+{{-     $shared = true -}}
+{{-   else if contains ".nsls2.bnl.gov" $fqdn -}}
+{{-     $work = true -}}
+{{-     $shared = true -}}
 {{-   else if eq $hostname "viper" -}}
-{{-     $bnl = true -}}
-{{-   else if eq $hostname "blade" -}}
+{{-     $work = true -}}
 {{-     $personal = true -}}
+{{-   else if eq $hostname "statler" "frogstar" -}}
+{{-     $work = true -}}
+{{-     $shared = false -}}
+{{-   else if eq $hostname "stuarts-mbp" -}}
+{{-     $work = true -}}
 {{-   else -}}
 {{-     $transient = false -}}
 {{-   end -}}
@@ -33,7 +64,7 @@
 
 {{- $name := "Stuart Campbell" -}}
 {{- $email := "" -}}
-{{- if $bnl -}}
+{{- if $work -}}
 {{-   $email = "scampbell@bnl.gov" -}}
 {{- else -}}
 {{-   $email = "stuart@stuartcampbell.me" -}}
@@ -44,6 +75,7 @@
     headless = {{ $headless }}
     hostname = {{ $hostname | quote }}
     personal = {{ $personal }}
-    onepasswordAccount = ""
-    bnl = {{ $bnl }}
+    work = {{ $work }}
     osid = {{ $osID | quote }}
+    wsl = {{ $wsl }}
+    shared = {{ $shared }}
