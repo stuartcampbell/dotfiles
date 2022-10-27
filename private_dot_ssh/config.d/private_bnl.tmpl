@@ -1,0 +1,10 @@
+# SSH config for BNL (Campus) 
+
+Host ssh.bnl.gov
+	ForwardAgent yes
+	PubKeyAuthentication yes
+
+Match Host {{- onepasswordRead "op://Work/BNL Internal Details/Computers/Campus Workstation" -}} !exec "host -W 1 %h"
+	ProxyJump ssh.bnl.gov
+Host {{- onepasswordRead "op://Work/BNL Internal Details/Computers/Campus Workstation"  -}}
+	Hostname {{- onepasswordRead "op://Work/BNL Internal Details/Computers/Campus Workstation" -}}
