@@ -1,10 +1,11 @@
 HOST *.fedoraproject.org fedorapeople.org *.fedorahosted.org
-	IdentityFile ~/.ssh/id_rsa_fedora
 	User sic
+	IdentityFile ~/.ssh/id_rsa_fedora.pub
+	IdentitiesOnly yes
+	IdentityAgent ~/.1password/agent.sock
 
 Host *
-    ForwardAgent yes
-    IdentitiesOnly = yes
+    ServerKeepAlive 5
     # ControlMaster config
     ControlMaster auto
     ControlPath ~/.ssh/controlmasters/%r@%h:%p.socket
