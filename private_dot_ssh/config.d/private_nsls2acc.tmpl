@@ -1,0 +1,15 @@
+{{- $jump1 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2acc-proxy-1") -}} 
+{{- $jump2 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2acc-proxy-2") -}} 
+{{- $port := trim (onepasswordRead "op://Work/BNL Internal Details/SOCKS Proxy Ports/nsls2acc-socks-port") -}} 
+{{ "" }}
+
+Host ssh-acc.nsls2.bnl.gov
+	ProxyJump ssh.bnl.gov
+
+Host {{ $jump1 }}
+	ProxyJump ssh-acc.nsls2.bnl.gov
+	DynamicForward {{ $port }}
+
+Host {{ $jump2 }}
+	ProxyJump ssh-acc.nsls2.bnl.gov
+	DynamicForward {{ $port }}
