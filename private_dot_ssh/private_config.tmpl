@@ -16,6 +16,8 @@ HOST *.fedoraproject.org fedorapeople.org *.fedorahosted.org
 
 Host *
     ServerAliveInterval 5
+    GSSAPIAuthentication no
+    PreferredAuthentications gssapi-with-mic,publickey,keyboard-interactive,password
     # ControlMaster config
     ControlMaster auto
     ControlPath ~/.ssh/%r@%h:%p
