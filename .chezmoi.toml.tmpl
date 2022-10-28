@@ -31,7 +31,7 @@
 {{/* On macOS the hostname can change depending on the network, this gives a more stable result */}}
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $computerName := output "scutil" "--get" "ComputerName" | trim -}}
-{{-   if eq $computerName "Stuart’s MacBook Pro" -}}
+{{-   if eq $computerName "Stuart's MacBook Pro" -}}
 {{-     $hostname = "stuarts-mbp" -}}
 {{-   else -}}
 {{-     $hostname = $computerName -}}
@@ -71,6 +71,8 @@
 {{- end -}}
 
 [data]
+    name = {{ $name | quote }}
+    email = {{ $email | quote }}
     transient = {{ $transient }}
     headless = {{ $headless }}
     hostname = {{ $hostname | quote }}
