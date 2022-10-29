@@ -14,3 +14,24 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+
+[branch]
+    # Always merge using rebase
+    autosetuprebase = always
+
+[help]
+	# Suggest the correct command
+	autocorrect = 1
+
+[alias]
+	update-submodules = submodule update --init --recursive
+	upgrade-submodules = submodule update --init --remote
+	
+	# The missing command <3
+	unstage = reset HEAD --
+	
+	# Undo modifications to a file
+	undo = checkout --
+	
+	# Checkout shortcut
+	co = checkout
