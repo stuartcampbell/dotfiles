@@ -1,0 +1,44 @@
+# 
+# General Aliases
+# 
+
+if [[ $OSTYPE == darwin* ]]; then
+    alias l.="ls -d .* -G"
+    alias ll="ls -lh -G"
+    alias ls="ls -G "
+elif [[ $OSTYPE == linux* ]]; then
+    alias l.="ls -d .* --color=auto"
+    alias ll="ls -lh --color=auto"
+    alias ls="ls --color=auto"
+fi
+
+# replacement for 'ls' (https://the.exa.website)
+if [ "$(command -v exa)" ]; then
+    alias exa="exa --icons --time-style=iso --git"
+    alias ls="exa"
+fi
+
+if [ "$(command -v nvim)" ]; then
+    alias vi=nvim
+    export EDITOR=nvim
+elif [ "$(command -v vim)" ]; then
+    alias vi=vim
+    export EDITOR=vim
+fi
+
+# https://github.com/defunkt/gist
+if [ "$(command -v gist)" ]; then
+    alias gist="gist -c"
+fi
+
+# List open ports 
+alias openports="netstat -tunlp"
+
+# SSH using password authentication
+alias sshpw="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no "
+alias ssh-nocheck="ssh -o StrictHostKeyChecking=no "
+
+{{ if .work }}
+alias caget="caget -a"
+{{ end }}
+
