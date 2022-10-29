@@ -10,6 +10,7 @@ install.sh
 
 {{ if ne .chezmoi.os "darwin" }}
 # macos specific files to ignore on other platforms
+Brewfile
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
