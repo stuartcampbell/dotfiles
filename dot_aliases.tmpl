@@ -32,11 +32,22 @@ if [ "$(command -v gist)" ]; then
 fi
 
 # List open ports 
+alias openports2='netstat -nape --inet'
 alias openports="netstat -tunlp"
 
 # SSH using password authentication
 alias sshpw="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no "
 alias ssh-nocheck="ssh -o StrictHostKeyChecking=no "
+
+# What files are using all my disk space - sorted list
+alias diskspacehogs="du -S | sort -n -r | more"
+
+# To see if a command is aliased, a file, or a built-in command
+alias checkcommand="type -t"
+
+# lovely directory trees
+alias tree='tree -CAhF --dirsfirst'
+alias treed='tree -CAFd'
 
 {{ if .work }}
 alias caget="caget -a"
