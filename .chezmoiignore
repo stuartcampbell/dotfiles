@@ -16,6 +16,7 @@ Brewfile
 {{ if ne .chezmoi.os "linux" }}
 # Linux specific files to ignore on other platforms
 .hushlogin
+.i3
 .local/share/fonts
 {{ end }}
 
