@@ -1,0 +1,28 @@
+#
+# Select opensc lib
+#
+set-pcks11-lib() {
+  if [ -f /etc/os-release ]; then
+    . /etc/os-release
+
+    if [[ $ID =~ "debian" ]]; then
+      PKCS11_LIB=/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+    elif [[ $ID =~ "pop" ]]; then
+      PKCS11_LIB=/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+    elif [[ $ID_LIKE =~ "fedora" ]]; then
+      PKCS11_LIB=/usr/lib64/pkcs11/opensc-pkcs11.so
+    elif [[ $OSTYPE == darwin* ]]; then
+      PKCS11_LIB=/usr/local/lib/opensc-pkcs11.so
+    fi
+  fi
+}
+
+#
+# PKCS11 SSH Key
+#
+set-pcks11-lib
+if [ -n "${PKCS11_LIB+1}" ]; then
+  alias yubikey-add="ssh-add -s $PKCS11_LIB"
+  alias yubikey-remove="ssh-add -e $PKCS11_LIB"
+  export PKCS11_LIB
+fi
