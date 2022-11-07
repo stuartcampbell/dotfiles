@@ -1,5 +1,7 @@
 # SSH config for BNL (Campus) 
 
+{{- $winserver := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/Windows Admin Server on Campus") -}}
+{{- $rdp_port := trim (onepasswordRead "op://Work/BNL Internal Details/Ports/Windows Admin Server on Campus RDP Port") -}}
 {{- $campus_workstation := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/Campus Workstation") -}} 
 {{ "" }}
 
@@ -11,11 +13,12 @@ Host ssh.bnl.gov
 Match Host {{ $campus_workstation }} !exec "host -W 1 %h"
 	ProxyJump ssh.bnl.gov
 	ForwardAgent yes
-	ForwardX11 yes
+	#ForwardX11 yes
 	DynamicForward {{ trim (onepasswordRead "op://Work/BNL Internal Details/Ports/campus-socks-port") }}
 
 Host {{ $campus_workstation }}
 	Hostname {{ $campus_workstation }}
 	ForwardAgent yes
-	ForwardX11 yes
+	#ForwardX11 yes
 	DynamicForward {{ trim (onepasswordRead "op://Work/BNL Internal Details/Ports/campus-socks-port") }}
+	LocalForward {{ $rdp_port }} {{ $campus_workstation }}:3389
