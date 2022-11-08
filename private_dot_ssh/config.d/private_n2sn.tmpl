@@ -47,14 +47,14 @@ Match host {{ $sdccjump }} !exec "host -W 1 {{ $internalonly }}"
 Host {{ $jump1 }}
     User {{ $username1 }}
     ForwardAgent yes
-	ProxyJump ssh.nsls2.bnl.gov
-	DynamicForward {{ $port }}
+    ProxyJump ssh.nsls2.bnl.gov
+    DynamicForward {{ $port }}
 
 Host {{ $jump2 }}
     User {{ $username1 }}
     ForwardAgent yes
-	ProxyJump ssh.nsls2.bnl.gov
-	DynamicForward {{ $port }}
+    ProxyJump ssh.nsls2.bnl.gov
+    DynamicForward {{ $port }}
 
 #
 # Connections to N2SN Systems
@@ -69,14 +69,22 @@ Host {{ $winserver1 }}
 Host {{ trim (onepasswordRead "op://Work/BNL Internal Details/Computers/N2SN Workstation") }}
     GSSAPIDelegateCredentials yes
     ForwardAgent yes
-    ForwardX11 yes
+    #ForwardX11 yes
     DynamicForward {{ trim (onepasswordRead "op://Work/BNL Internal Details/Ports/n2sn-workstation-socks-port") }}
+    ProxyJump {{ $sdccjump }}
+
+Match User root Host *.nsls2.bnl.local
+    User root
+    # Root auth is pubkey-only, private key comes from Yubikey loaded in agent
+    PubKeyAuthentication yes
+    ForwardAgent yes
+    GSSAPIDelegateCredentials no
     ProxyJump {{ $jump1 }}
 
 Match Host *.nsls2.bnl.local
   ForwardAgent yes
   GSSAPIDelegateCredentials yes
-  ProxyJump {{ $jump1 }}
+  ProxyJump ssh.nsls2.bnl.gov
 
 Match Host *.lbms.bnl.local
   ProxyJump {{ $jump1 }}
