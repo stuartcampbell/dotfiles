@@ -3,8 +3,8 @@
 cask_args appdir: "/Applications"
 
 # Setup the 'taps'
-tap "caskroom/cask"
-tap "caskroom/fonts"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap 'brewsci/science'
 
 # Fuse is required to be installed 
