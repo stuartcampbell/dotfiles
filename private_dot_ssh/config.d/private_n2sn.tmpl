@@ -9,6 +9,7 @@
 {{- $adserver3 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/ActiveDirectory DC 3") -}}
 {{- $winserver1 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/Windows Admin Server") -}}
 {{- $rdp_port1 := trim (onepasswordRead "op://Work/BNL Internal Details/Ports/Windows Admin Server RDP Port") -}}
+{{- $campus_workstation := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/Campus Workstation") -}}
 {{ "" }} 
 
 Match host ssh.nsls2.bnl.gov exec "host -W 1 {{ $internalonly }}"
@@ -92,7 +93,7 @@ Match Host *.lbms.bnl.local
 Match Host *.lbms.bnl.gov
   ProxyJump {{ $jump1 }}
 
-Match Host {{ printf "*.nsls2.bnl.gov,!%s,!%s,!%s,!ssh*.nsls2.bnl.gov" $jump1 $jump2 $sdccjump }}
+Match Host {{ printf "*.nsls2.bnl.gov,!%s,!%s,!%s,!%s,!ssh*.nsls2.bnl.gov" $jump1 $jump2 $sdccjump $campus_workstation}}
     ForwardAgent yes
     GSSAPIDelegateCredentials yes
     ProxyJump {{ $jump1 }}
