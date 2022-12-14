@@ -48,12 +48,14 @@ Match host {{ $sdccjump }} !exec "host -W 1 {{ $internalonly }}"
 Host {{ $jump1 }}
     User {{ $username1 }}
     ForwardAgent yes
+    LocalForward {{ $rdp_port1 }} {{ $winserver1 }}:3389
     ProxyJump ssh.nsls2.bnl.gov
     DynamicForward {{ $port }}
 
 Host {{ $jump2 }}
     User {{ $username1 }}
     ForwardAgent yes
+    LocalForward {{ $rdp_port1 }} {{ $winserver1 }}:3389
     ProxyJump ssh.nsls2.bnl.gov
     DynamicForward {{ $port }}
 
