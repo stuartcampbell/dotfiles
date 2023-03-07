@@ -15,6 +15,7 @@
     url = "https://github.com/romkatv/powerlevel10k/archive/v1.16.1.tar.gz"
     exact = true
     stripComponents = 1
+    
 {{- if and (not .transient) (not .headless) }}
 {{-   $fontDir := "" }}
 {{-   if eq .chezmoi.os "darwin" }}
@@ -22,7 +23,7 @@
 {{-   else if eq .chezmoi.os "linux" }}
 {{-     $fontDir = ".local/share/fonts" }}
 {{-   end }}
-["{{ $fontDir }}"]
+["{{ $fontDir }}/CascadiaCode"]
     type = "archive"
     url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/CascadiaCode.zip"
     exact = true
