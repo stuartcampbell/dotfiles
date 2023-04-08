@@ -9,7 +9,7 @@ set-pcks11-lib() {
       PKCS11_LIB=/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
     elif [[ $ID =~ "pop" ]]; then
       PKCS11_LIB=/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
-    elif [[ $ID_LIKE =~ "fedora" ]]; then
+    elif [[ $ID =~ "fedora" ]]; then
       PKCS11_LIB=/usr/lib64/pkcs11/opensc-pkcs11.so
     elif [[ $OSTYPE == darwin* ]]; then
       PKCS11_LIB=/usr/local/lib/opensc-pkcs11.so
