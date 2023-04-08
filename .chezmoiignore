@@ -12,6 +12,7 @@ Brewfile
 {{ if ne .chezmoi.os "darwin" }}
 # macos specific files to ignore on other platforms
 Brewfile
+run_once_brewfile_bundle.sh
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
