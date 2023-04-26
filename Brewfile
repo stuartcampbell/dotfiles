@@ -1,80 +1,182 @@
-
-# specify a directory to install
-cask_args appdir: "/Applications"
-
-# Setup the 'taps'
+tap "1password/tap"
+tap "brewsci/science"
+tap "hashicorp/tap"
+tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
-tap 'brewsci/science'
-
-# Fuse is required to be installed 
-# for 'encfs' to work
-cask 'osxfuse'
-
-brew 'ack'
-brew 'bash-completion'
-brew 'ccache'
-brew 'cmake'
-brew 'cppcheck'
-brew 'encfs'
-brew 'exa'
-brew 'fish'
-brew 'gcc'
-brew 'git'
-brew 'grace'
-brew 'feh'
-brew 'hdf5'
-brew 'hub'
-brew 'json-fortran'
-brew 'lftp'
-brew 'nexusformat'
-brew 'ninja'
-brew 'opensc'
-brew 'source-highlight'
-brew 'the_silver_searcher'
-brew 'tmux'
-brew 'tree'
-brew 'vim'
-brew 'wget'
-brew 'zsh'
-brew 'zsh-completions'
-brew 'zsh-syntax-highlighting'
-
-## macOS specific stuff below
-
-# Mac App Store
-brew 'mas'
-
-# Casks
-cask 'atom'
-cask 'blue-jeans'
-cask 'caffeine'
-cask 'dropbox'
-cask 'etcher'
-cask 'evernote'
-cask 'firefox'
-cask 'github'
-cask 'google-chrome'
-cask 'hyper'
-cask 'iterm2'
-cask 'java'
-cask 'kaleidoscope'
-cask 'lastpass'
-cask 'omnigraffle'
-cask 'omniplan'
-cask 'skype'
-cask 'slack'
-cask 'sublime-text'
-cask 'tower'
-cask 'vivaldi'
-cask 'vlc'
-cask 'xquartz'
-
-# Fonts
-cask 'font-fira-code'
-cask 'font-firacode-nerd-font'
-cask 'font-fira-mono-for-powerline'
-#cask 'font-sourcecodepro-nerd-font'
-#cask 'font-hack-nerd-font'
-
-#brew 'watchman' # https://facebook.github.io/watchman/docs/install.html
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "kong/kong"
+tap "microsoft/git"
+tap "mongodb/brew"
+tap "robinovitch61/tap"
+tap "timidrobot/tap"
+brew "ack"
+brew "libyaml"
+brew "pyyaml"
+brew "ansible"
+brew "black"
+brew "ansible-lint"
+brew "autossh"
+brew "azcopy"
+brew "azure-cli"
+brew "bash-completion"
+brew "node"
+brew "bitwarden-cli"
+brew "glib"
+brew "python@3.9"
+brew "coreutils"
+brew "unbound"
+brew "gnutls"
+brew "cask"
+brew "ccache"
+brew "chezmoi"
+brew "cmake", link: false
+brew "cmake-docs", link: false
+brew "cookiecutter"
+brew "cppcheck"
+brew "curl"
+brew "deno"
+brew "dos2unix"
+brew "exa"
+brew "feh"
+brew "harfbuzz"
+brew "libarchive"
+brew "librist"
+brew "sdl2"
+brew "srt"
+brew "tesseract"
+brew "zimg"
+brew "ffmpeg"
+brew "gcc"
+brew "open-mpi"
+brew "fftw"
+brew "fish"
+brew "freeipmi"
+brew "gengetopt"
+brew "gh"
+brew "git"
+brew "git-lfs"
+brew "gnupg"
+brew "go"
+brew "gobject-introspection"
+brew "gpgme"
+brew "grace"
+brew "gsl"
+brew "hdf5"
+brew "help2man"
+brew "htop"
+brew "httpie"
+brew "hub"
+brew "libheif"
+brew "imagemagick"
+brew "ipcalc"
+brew "ipmitool"
+brew "ipmiutil"
+brew "jq"
+brew "json-fortran"
+brew "jsonschema"
+brew "keychain"
+brew "lftp"
+brew "librdkafka"
+brew "libyubikey"
+brew "mas"
+brew "nghttp2"
+brew "mermaid-cli"
+brew "molecule"
+brew "mongocli"
+brew "mr"
+brew "neofetch"
+brew "ninja"
+brew "nmap"
+brew "openblas"
+brew "opensc"
+brew "p0f"
+brew "pandoc"
+brew "pipx"
+brew "qemu"
+brew "podman"
+brew "postgresql@14", restart_service: true
+brew "redis", restart_service: true
+brew "ruff"
+brew "skopeo"
+brew "source-highlight"
+brew "telnet"
+brew "the_silver_searcher"
+brew "tmux"
+brew "tree"
+brew "vale"
+brew "vim"
+brew "wget"
+brew "wimlib"
+brew "xq"
+brew "youtube-dl"
+brew "yq"
+brew "yubico-piv-tool"
+brew "zip"
+brew "zsh"
+brew "zsh-completions"
+brew "zsh-syntax-highlighting"
+brew "hashicorp/tap/nomad"
+brew "mongodb/brew/mongodb-community"
+brew "robinovitch61/tap/wander"
+brew "timidrobot/tap/cmc"
+cask "1password-cli"
+cask "atom", args: { appdir: "/Applications" }
+cask "caffeine"
+cask "cmake"
+cask "cyberduck"
+cask "expandrive"
+cask "font-daddy-time-mono-nerd-font"
+cask "font-fantasque-sans-mono-nerd-font"
+cask "font-fira-code", args: { appdir: "/Applications" }
+cask "font-redhat"
+cask "gimp"
+cask "git-credential-manager-core"
+cask "github", args: { appdir: "/Applications" }
+cask "hashicorp-vagrant"
+cask "hyper", args: { appdir: "/Applications" }
+cask "inkscape"
+cask "iterm2"
+cask "kaleidoscope"
+cask "lastpass", args: { appdir: "/Applications" }
+cask "libreoffice"
+cask "mattermost"
+cask "meld"
+cask "microsoft-auto-update"
+cask "microsoft-edge"
+cask "mockoon"
+cask "mongodb-compass"
+cask "osquery"
+cask "osxfuse"
+cask "postman"
+cask "powershell"
+cask "react-studio"
+cask "redisinsight"
+cask "signal"
+cask "singularity"
+cask "slack"
+cask "sublime-text", args: { appdir: "/Applications" }
+cask "tower"
+cask "typora"
+cask "visual-studio-code"
+cask "vivaldi", args: { appdir: "/Applications" }
+cask "vlc", args: { appdir: "/Applications" }
+cask "xquartz"
+cask "zotero"
+mas "1Password for Safari", id: 1569813296
+mas "Core Tunnel", id: 1354318707
+mas "Developer", id: 640199958
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Jayson", id: 1468691718
+mas "Keynote", id: 409183694
+mas "Magnet", id: 441258766
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Numbers", id: 409203825
+mas "OneDrive", id: 823766827
+mas "Pages", id: 409201541
+mas "Tailscale", id: 1475387142
+mas "Todoist", id: 585829637
+mas "Xcode", id: 497799835
