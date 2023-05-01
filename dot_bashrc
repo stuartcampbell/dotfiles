@@ -28,5 +28,6 @@ unset rc
 
 [ -r /home/scampbell/.byobu/prompt ] && . /home/scampbell/.byobu/prompt   #byobu-prompt#
 
-test -s ~/.alias && . ~/.alias || true
+# Local Aliases
+test -s ~/.aliases && . ~/.aliases || true
 
