@@ -42,12 +42,6 @@
 {{- if not $transient -}}
 {{-   if eq $hostname "blade15" "BLADE15" "blade" -}}
 {{-     $personal = true -}}
-{{-   else if contains ".nsls2.bnl.local" $fqdn -}}
-{{-     $work = true -}}
-{{-     $shared = true -}}
-{{-   else if contains ".nsls2.bnl.gov" $fqdn -}}
-{{-     $work = true -}}
-{{-     $shared = true -}}
 {{-   else if eq $hostname "viper" "hactar" -}}
 {{-     $work = true -}}
 {{-     $personal = true -}}
@@ -57,6 +51,12 @@
 {{-   else if eq $hostname "stuarts-mbp" -}}
 {{-     $work = true -}}
 {{-     $shared = false -}}
+{{-   else if contains ".nsls2.bnl.local" $fqdn -}}
+{{-     $work = true -}}
+{{-     $shared = true -}}
+{{-   else if contains ".nsls2.bnl.gov" $fqdn -}}
+{{-     $work = true -}}
+{{-     $shared = true -}}
 {{-   else -}}
 {{-     $transient = false -}}
 {{-   end -}}
