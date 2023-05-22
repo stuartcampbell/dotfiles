@@ -5,6 +5,8 @@
 Secrets are stored in [1Password](https://1password.com/), and so we need the 
 [1Password CLI](https://support.1password.com/command-line-getting-started/) installed.
 
+Start 1Password, configure account and then turn on integration with CLI (under settings->Developer)
+
 ## Install chezmoi
 
 NOTE: I have found that using the chezmoi install script means that the integration 
