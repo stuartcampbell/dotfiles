@@ -38,6 +38,7 @@ alias openports="netstat -tunlp"
 # SSH using password authentication
 alias sshpw="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no "
 alias ssh-nocheck="ssh -o StrictHostKeyChecking=no "
+alias ssh-noconfig="ssh -F /dev/null "
 
 # What files are using all my disk space - sorted list
 alias diskspacehogs="du -S | sort -n -r | more"
