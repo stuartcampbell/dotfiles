@@ -29,6 +29,11 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h" 
+["{{ $fontDir }}"]
+    type = "archive"
+    url = "https://github.com/intel/intel-one-mono/releases/download/V1.2.1/ttf.zip"
+    stripComponents = 1
+    refreshPeriod = "168h"
 ["{{ $fontDir }}/MesloLGS NF Regular.ttf"]
     type = "file"
     url = "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS NF Regular.ttf"
