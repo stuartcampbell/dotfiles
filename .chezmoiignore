@@ -34,6 +34,11 @@ AppData
 .zshrc
 {{ end }}
 
+{{ if not .wsl }}
+# WSL specific files to ignore on other platforms
+bin/fix-wsl-dns.sh
+{{ end }}
+
 {{ if .transient}}
 .ssh
 .netrc
