@@ -59,3 +59,6 @@ alias quota="quota -s -f /nsls2/users/$USER"
 alias okta="flatpak run com.okta.developer.CLI"
 {{ end }}
 
+# Container fun
+alias docker-stop-all="docker stop $(docker ps -a -q)"
+
