@@ -15,6 +15,12 @@
     url = "https://github.com/romkatv/powerlevel10k/archive/v1.16.1.tar.gz"
     exact = true
     stripComponents = 1
+
+[".local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io"]
+    type = "archive"
+    url = "https://github.com/JoseExposito/gnome-shell-extension-x11gestures/archive/18.zip"
+    exact = true
+    stripComponents = 1
     
 {{- if and (not .transient) (not .headless) }}
 {{-   $fontDir := "" }}
