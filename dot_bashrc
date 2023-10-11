@@ -33,6 +33,12 @@ if [ -d "$HOME/.local/share/JetBrains/Toolbox/scripts" ]; then
 fi
 export PATH
 
+# Deno (Slack)
+if [ -d "$HOME/.deno" ]; then
+  export DENO_INSTALL="/home/scampbell/.deno"
+  export PATH="$DENO_INSTALL/bin:$PATH"
+fi
+
 # Local Aliases
 test -s ~/.aliases && . ~/.aliases || true
 
