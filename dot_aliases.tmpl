@@ -50,6 +50,10 @@ alias ssh-noconfig="ssh -F /dev/null "
 # What files are using all my disk space - sorted list
 alias diskspacehogs="du -S | sort -n -r | more"
 
+# Some filesystem queries
+alias emptydirs="find . -type d -empty"
+alias emptyfiles="find . -type f -empty"
+
 # To see if a command is aliased, a file, or a built-in command
 alias checkcommand="type -t"
 
