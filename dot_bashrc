@@ -48,6 +48,10 @@ if [ -d "$HOME/.hishtory" ]; then
   . "$HOME/.hishtory/config.sh"
 fi
 
+if [ "$(command -v keychain)" ]; then
+  eval `keychain -q --eval --agents ssh`
+fi
+
 # Local Aliases
 test -s ~/.aliases && . ~/.aliases || true
 
