@@ -2,20 +2,22 @@
 # General Aliases
 # 
 
-if [[ $OSTYPE == darwin* ]]; then
-    alias l.="ls -d .* -G"
-    alias ll="ls -lh -G"
-    alias ls="ls -G "
-elif [[ $OSTYPE == linux* ]]; then
-    alias l.="ls -d .* --color=auto"
-    alias ll="ls -lh --color=auto"
-    alias ls="ls --color=auto"
-fi
-
 # replacement for 'ls' (https://eza.rocks)
 if [ "$(command -v eza)" ]; then
     alias eza="eza --icons --time-style=iso --git"
-    alias ls="eza"
+    export LS_CMD=eza
+else
+    export LS_CMD=ls
+fi
+
+if [[ $OSTYPE == darwin* ]]; then
+    alias l.="$LS_CMD -d .* -G"
+    alias ll="$LS_CMD -lh -G"
+    alias ls="$LS_CMD -G "
+elif [[ $OSTYPE == linux* ]]; then
+    alias l.="$LS_CMD -d .* --color=auto"
+    alias ll="$LS_CMD -lh --color=auto"
+    alias ls="$LS_CMD --color=auto"
 fi
 
 if [ "$(command -v nvim)" ]; then
