@@ -12,10 +12,10 @@ elif [[ $OSTYPE == linux* ]]; then
     alias ls="ls --color=auto"
 fi
 
-# replacement for 'ls' (https://the.exa.website)
-if [ "$(command -v exa)" ]; then
-    alias exa="exa --icons --time-style=iso --git"
-    alias ls="exa"
+# replacement for 'ls' (https://eza.rocks)
+if [ "$(command -v eza)" ]; then
+    alias eza="eza --icons --time-style=iso --git"
+    alias ls="eza"
 fi
 
 if [ "$(command -v nvim)" ]; then

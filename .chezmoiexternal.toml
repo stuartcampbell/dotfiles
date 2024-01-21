@@ -10,12 +10,26 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+{{- $powerlevel10kVersionTag := (gitHubLatestRelease "romkatv/powerlevel10k").TagName }}
 [".oh-my-zsh/custom/themes/powerlevel10k"]
     type = "archive"
-    url = "https://github.com/romkatv/powerlevel10k/archive/v1.16.1.tar.gz"
+    url = "https://github.com/romkatv/powerlevel10k/archive/{{ $powerlevel10kVersionTag }}.tar.gz"
     exact = true
     stripComponents = 1
-
+{{- if eq .chezmoi.os "linux" }}
+{{- $ezaVersionTag := (gitHubLatestRelease "eza-community/eza").TagName }}
+[".local/bin/eza"]
+    type = "archive-file"
+    url = "https://github.com/eza-community/eza/releases/download/{{ $ezaVersionTag }}/eza_x86_64-unknown-linux-gnu.tar.gz"
+    executable = true
+    path = "./eza"
+{{- $gduVersionTag := (gitHubLatestRelease "dundee/gdu").TagName }}
+[".local/bin/gdu"]
+    type = "archive-file"
+    url = "https://github.com/dundee/gdu/releases/download/{{ $gduVersionTag }}/gdu_linux_amd64.tgz"
+    executable = true
+    path = "gdu_linux_amd64"
+{{- end }}
 [".local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io"]
     type = "archive"
     url = "https://github.com/JoseExposito/gnome-shell-extension-x11gestures/archive/18.zip"
