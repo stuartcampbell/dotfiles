@@ -16,7 +16,7 @@ sudo dnf install gh
 
 {{ end -}}
 
-{{- if and (eq .osid "linux-pop" "linux-ubuntu") (not .ephemeral) -}}
+{{- if and (eq .osid "linux-pop" "linux-ubuntu") (not .transient) -}}
 
 #!/bin/sh
 
