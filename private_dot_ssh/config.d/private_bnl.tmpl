@@ -20,3 +20,7 @@ Host {{ $campus_workstation }}
 	ForwardAgent yes
 	DynamicForward {{ trim (onepasswordRead "op://Work/BNL Internal Details/Ports/campus-socks-port") }}
 	LocalForward {{ $rdp_port }} {{ $campus_workstation }}:3389
+
+# NSLS-II internal/campus hosts
+host *-int.nsls2.bnl.gov
+  ProxyJump ssh.bnl.gov
