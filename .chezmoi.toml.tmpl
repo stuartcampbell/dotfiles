@@ -41,6 +41,7 @@
 
 {{- if not $transient -}}
 {{-   if eq $hostname "blade15" "BLADE15" "blade" -}}
+{{-     $work = false -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "viper" "hactar" "krikkit" -}}
 {{-     $work = true -}}
@@ -58,7 +59,8 @@
 {{-     $work = true -}}
 {{-     $shared = true -}}
 {{-   else -}}
-{{-     $transient = false -}}
+{{-     $transient = true -}}
+{{-     $headless = true -}}
 {{-   end -}}
 {{- end -}}
 
