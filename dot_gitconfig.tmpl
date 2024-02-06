@@ -2,26 +2,8 @@
 	email = {{ .email | quote }}
 	name = {{ .name | quote }}
 
-[init]
-	defaultBranch = main
-
 [github]
 	user = stuartcampbell
-
-[credential "https://github.com"]
-	helper = 
-	helper = !gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !gh auth git-credential
-
-[branch]
-    # Always merge using rebase
-    autosetuprebase = always
-
-[help]
-	# Suggest the correct command
-	autocorrect = 1
 
 [alias]
 	update-submodules = submodule update --init --recursive
@@ -36,12 +18,39 @@
 	# Checkout shortcut
 	co = checkout
 
-[pull]
-	rebase = true
+[branch]
+    # Always merge using rebase
+    autosetuprebase = always
+
+[color]
+	ui = auto
+
+{{- $ghPath := lookPath "gh" }}
+{{- if $ghPath }}
+[credential "https://github.com"]
+	helper = !{{ $ghPath }} auth git-credential
+[credential "https://gist.github.com"]
+	helper = !{{ $ghPath }} auth git-credential
+{{- end }}
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[fetch]
+	prune = true
+
+[help]
+	# Suggest the correct command
+	autocorrect = 1
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[push]
+	default = current
 
