@@ -18,6 +18,9 @@
 	# Checkout shortcut
 	co = checkout
 
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	
+
 [branch]
     # Always merge using rebase
     autosetuprebase = always
@@ -54,3 +57,4 @@
 [push]
 	default = current
 
+{{/* vim: set filetype=gitconfig: */}}
