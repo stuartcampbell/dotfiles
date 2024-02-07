@@ -1,10 +1,29 @@
 {{- $jump1 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2acc-proxy-1") -}} 
 {{- $jump2 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2acc-proxy-2") -}} 
+{{- $n2snjump := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/n2sn-proxy-2") -}}
 {{- $port := trim (onepasswordRead "op://Work/BNL Internal Details/Ports/nsls2acc-socks-port") -}} 
 {{ "" }}
 
+
+Host webview-acc.nsls2.bnl.gov
+  ProxyJump {{ $n2snjump }}
+
+Host olog-acc.nsls2.bnl.gov
+  ProxyJump {{ $n2snjump }}
+
+-Host shift-acc.nsls2.bnl.gov
+  ProxyJump {{ $n2snjump }}
+
+Match host sputnik*.nsls2.bnl.gov
+  ProxyJump {{ $jump1 }}
+
+Match host ansible-acc*.nsls2.bnl.gov
+  ProxyJump {{ $jump1 }}
+
 Host ssh-acc.nsls2.bnl.gov
-	ProxyJump ssh.bnl.gov
+	ProxyJump ssh.nsls2.bnl.gov
+
+#--- JUMP HOSTS ---
 
 Host {{ $jump1 }}
 	ProxyJump ssh-acc.nsls2.bnl.gov
