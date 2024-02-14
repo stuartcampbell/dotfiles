@@ -77,4 +77,5 @@ alias okta="flatpak run com.okta.developer.CLI"
 alias git-aliases="git config --get-regexp ^alias"
 
 # Clean up local branches where remote has "gone".
-alias git-clean-local-branches="git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d"
+# TODO: Fix this, doesn't currently work correctly
+#alias git-clean-local-branches="git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d"
