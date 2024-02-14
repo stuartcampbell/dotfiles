@@ -42,7 +42,11 @@ alias openports2='netstat -nape --inet'
 alias openports="netstat -tunlp"
 
 # What are my DNS servers (for the cases where you can't just cat /etc/resolv.conf)
-alias which-dns="( nmcli dev list || nmcli dev show ) 2>/dev/null | grep DNS"
+# Only works if NetworkManager CLI is installed.
+if [ "$(command -v nmcli)" ]; then
+    alias which-dns="( nmcli dev list || nmcli dev show ) 2>/dev/null | grep DNS"
+fi
+
 
 # SSH using password authentication
 alias sshpw="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no "
