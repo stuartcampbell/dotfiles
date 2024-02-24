@@ -1,4 +1,4 @@
-{{ if eq .os "linux" -}}
+{{ if and (eq .os "linux") (not .transient) -}}
 
 #!/bin/bash
 
