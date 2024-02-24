@@ -60,6 +60,11 @@ fi
 # Local Aliases
 test -s ~/.aliases && . ~/.aliases || true
 
+# Zoxide - Replacement for 'cd'
+if [ "$(zoxide -V)" ]; then
+  eval "$(zoxide init bash)"
+fi
+
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/scampbell/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
