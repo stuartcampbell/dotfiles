@@ -7,6 +7,9 @@
 {{- $shared := false -}}    {{/* true if this is a shared machine */}}
 {{- "" -}}
 
+# Gather CPU info
+{{- includeTemplate "cpu" . }}
+
 {{- $osID := .chezmoi.os -}}
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
