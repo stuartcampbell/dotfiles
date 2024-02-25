@@ -1,0 +1,70 @@
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $brews := list
+     "bat"
+     "curl"
+     "eza"
+     "fd"
+     "ffmpeg"
+     "gdu"
+     "gh"
+     "git"
+     "git-lfs"
+     "gnu-units"
+     "gnupg"
+     "go"
+     "golangci-lint"
+     "jq"
+     "node"
+     "openjdk"
+     "pinentry-mac"
+     "ripgrep"
+     "tmux"
+     "wget"
+     "xz"
+     "yt-dlp" -}}
+{{ $casks := list
+     "google-chrome"
+     "google-earth-pro"
+     "hammerspoon"
+     "iterm2"
+     "karabiner-elements"
+     "spotify"
+     "vagrant"
+     "visual-studio-code"
+     "vlc" -}}
+
+# Add some more packages for Intel CPUs
+{{ if eq .chezmoi.arch "amd64" -}}
+{{   $brews = concat $brews (list
+       "shellcheck") -}}
+{{   $casks = concat $casks (list
+       "virtualbox") -}}
+{{ end -}}
+
+{{ if .personal -}}
+# Additional Packagaes for "personal" machines
+{{   $brews = concat $brews (list
+       "postgis"
+       "postgresql"
+       "pspg") -}}
+{{   $casks = concat $casks (list
+       "1password-cli"
+       "balenaetcher"
+       "signal"
+       "telegram"
+       "transmission"
+       "viber"
+       "whatsapp") -}}
+{{ end -}}
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
