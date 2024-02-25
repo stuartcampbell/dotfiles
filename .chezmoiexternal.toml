@@ -10,32 +10,38 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+
 {{- $powerlevel10kVersionTag := (gitHubLatestRelease "romkatv/powerlevel10k").TagName }}
 [".oh-my-zsh/custom/themes/powerlevel10k"]
     type = "archive"
     url = "https://github.com/romkatv/powerlevel10k/archive/{{ $powerlevel10kVersionTag }}.tar.gz"
     exact = true
     stripComponents = 1
+
 {{- if eq .chezmoi.os "linux" }}
+
+[".local/bin/nvim"]
+    type = "file"
+    url = "https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
+    refreshPeriod = "672h"
+    executable = true
+
 {{- $ezaVersionTag := (gitHubLatestRelease "eza-community/eza").TagName }}
 [".local/bin/eza"]
     type = "archive-file"
     url = "https://github.com/eza-community/eza/releases/download/{{ $ezaVersionTag }}/eza_x86_64-unknown-linux-gnu.tar.gz"
     executable = true
     path = "./eza"
+
 {{- $gduVersionTag := (gitHubLatestRelease "dundee/gdu").TagName }}
 [".local/bin/gdu"]
     type = "archive-file"
     url = "https://github.com/dundee/gdu/releases/download/{{ $gduVersionTag }}/gdu_linux_amd64.tgz"
     executable = true
     path = "gdu_linux_amd64"
+
 {{- end }}
-[".local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io"]
-    type = "archive"
-    url = "https://github.com/JoseExposito/gnome-shell-extension-x11gestures/archive/18.zip"
-    exact = true
-    stripComponents = 1
-    
+
 {{- if and (not .transient) (not .headless) }}
 {{-   $fontDir := "" }}
 {{-   if eq .chezmoi.os "darwin" }}
@@ -43,17 +49,24 @@
 {{-   else if eq .chezmoi.os "linux" }}
 {{-     $fontDir = ".local/share/fonts" }}
 {{-   end }}
-["{{ $fontDir }}/CascadiaCode"]
+
+
+{{- $inteloneFontVersionTag := (gitHubLatestRelease "intel/intel-one-mono").TagName }}
+["{{ $fontDir }}/intel-one-mono/"]
     type = "archive"
-    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/CascadiaCode.zip"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h" 
-["{{ $fontDir }}"]
-    type = "archive"
-    url = "https://github.com/intel/intel-one-mono/releases/download/V1.2.1/ttf.zip"
-    stripComponents = 1
+    url = "https://github.com/intel/intel-one-mono/releases/download/{{ $inteloneFontVersionTag }}/ttf.zip"
     refreshPeriod = "168h"
+
+{{- $nerdFontVersionTag := (gitHubLatestRelease "ryanoasis/nerd-fonts").TagName }}
+
+["{{ $fontDir }}/Cascadia-NF/"]
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ $nerdFontVersionTag }}/CascadiaCode.zip"
+
+["{{ $fontDir }}/Hack-NF/"]
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ $nerdFontVersionTag }}/Hack.zip"
+
 ["{{ $fontDir }}/MesloLGS NF Regular.ttf"]
     type = "file"
     url = "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS NF Regular.ttf"
@@ -70,5 +83,13 @@
     type = "file"
     url = "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS NF Bold Italic.ttf"
     refreshPeriod = "168h"
+
+
+[".local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io"]
+    type = "archive"
+    url = "https://github.com/JoseExposito/gnome-shell-extension-x11gestures/archive/18.zip"
+    exact = true
+    stripComponents = 1
+    
 {{- end }}
 
