@@ -61,8 +61,13 @@ fi
 test -s ~/.aliases && . ~/.aliases || true
 
 # Zoxide - Replacement for 'cd'
-if [ "$(zoxide -V)" ]; then
+if [ "$(command -v zoxide)" ]; then
   eval "$(zoxide init bash)"
+fi
+
+# Starship Prompt
+if [ "$(command -v starship)" ]; then
+  eval "$(starship init bash)"
 fi
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
