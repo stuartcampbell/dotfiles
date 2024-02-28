@@ -7,6 +7,8 @@
 {{- if eq .chezmoi.os "darwin" }}
 {{-   $cpuCores = (output "sysctl" "-n" "hw.physicalcpu_max") | trim | atoi }}
 {{-   $cpuThreads = (output "sysctl" "-n" "hw.logicalcpu_max") | trim | atoi }}
+{{-   $cpuModel = (output "sysctl" "-n" "machdep.cpu.brand_string") | trim }}
+{{-   $cpuVendor = (output "sysctl" "-n" "machdep.cpu.vendor") | trim }}
 {{- else if eq .chezmoi.os "linux" }}
 {{-   $cpuCores = (output "sh" "-c" "lscpu --online --parse | grep --invert-match '^#' | sort --field-separator=',' --key='2,4' --unique | wc --lines") | trim | atoi }}
 {{-   $cpuThreads = (output "sh" "-c" "lscpu --online --parse | grep --invert-match '^#' | wc --lines") | trim | atoi }}
