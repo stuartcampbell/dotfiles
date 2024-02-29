@@ -4,7 +4,7 @@
 
 # replacement for 'ls' (https://eza.rocks)
 if [ "$(command -v eza)" ]; then
-    alias eza="eza --icons --time-style=iso --git"
+    alias eza="eza --icons --group-directories-first --time-style=iso --git"
     export LS_CMD=eza
 else
     export LS_CMD=ls
