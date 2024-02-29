@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+import requests # python-requests
+import sys
+
+URL = 'http://status.sns.ornl.gov/getRoundBox.jsp'
+CLASS_ON  = 'beam_status_on'
+CLASS_OFF = 'beam_status_off'
+ALLOWED_FACILITY = ['HFIR', 'SNS']
+EXP_POWER = {'SNS':1500,
+             'HFIR':85}
+
+def toConkyInt(facility, value):
+    '''conky expects a value between 0 and 100'''
+    value = float(value.split(' ')[0])
+    value = 100. * value /float(EXP_POWER[facility])
+    return int(value+.5)
+
+def toValue(value):
+    value,units = value.split(' ')
+    if units == 'kW' and float(value) > 1000.:
+        units = 'MW'
+        value = float(value)/1000.
+        value = '%.1f' % value
+    return str(value) + ' ' + str(units)
+
+def getPower(facility, percentage):
+    facility = facility.upper()
+    if facility not in ALLOWED_FACILITY:
+        raise ValueError('Facility \'%s\' is not an allowed value' % facility)
+
+    params = {'which':facility+'Status'}
+    try:
+        req = requests.get(URL, params=params, timeout=1) # seconds
+    except:
+        if percentage:
+            return 0
+        else:
+            return "error"
+
+    status_code = req.status_code
+    if status_code != 200:
+        print('for', URL)
+        print('status:', status_code)
+        return 'ERROR'
+
+    for line in req.text.split('\n'):
+        line = line.strip()
+        if len(line) <= 0:
+            continue
+
+        if CLASS_ON in str(line):
+            # magic numbers are awesome
+            start = line.find(CLASS_ON) + len(CLASS_ON) + 2
+            stop = line.find('span', start) - 2
+            line = line[start:stop].strip()
+            if percentage:
+                return toConkyInt(facility, line)
+            else:
+                return toValue(line)
+        elif CLASS_OFF in str(line):
+            if percentage:
+                return 0
+            else:
+                return 'off'
+    return 'ERROR'
+
+if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description='Get the beam power')
+
+    facilities = ALLOWED_FACILITY[:]
+    facilities.extend([facility.lower() for facility in ALLOWED_FACILITY])
+    parser.add_argument('facility', choices=facilities)
+
+    parser.add_argument('-p', '--percentage', action='store_true',
+                        help='Convert value to an integer percentage (0-100)')
+
+    parser.add_argument('-w', '--width', type=int, nargs='?',
+                        help='number of characters to output')
+
+    options = parser.parse_args()
+
+    result = getPower(options.facility, options.percentage)
+    if options.width is not None:
+        fmt = '{0: >' + str(options.width) + '}'
+        result = fmt.format(result)
+
+    print(result)
+
