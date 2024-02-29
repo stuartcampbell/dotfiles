@@ -1,0 +1,7 @@
+{{ if eq .chezmoi.os "linux" -}}
+
+#!/bin/bash
+
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+{{ end -}}
