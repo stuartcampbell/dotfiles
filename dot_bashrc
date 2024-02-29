@@ -36,6 +36,9 @@ export PATH
 # Hatch Command Completions
 . ~/.hatch-complete.bash 
 
+# Rust Cargo 
+test -s $HOME/.cargo/env && . $HOME/.cargo/env || true
+
 # Deno (Slack)
 if [ -d "$HOME/.deno" ]; then
   export DENO_INSTALL="/home/scampbell/.deno"
