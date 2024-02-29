@@ -1,5 +1,6 @@
 format = """
 [░▒▓](#3B4252)\
+$os\
 $username\
 [](bg:#434C5E fg:#3B4252)\
 $directory\
@@ -159,8 +160,11 @@ format = '[ $symbol ($version) ]($style)'
 [ocaml]
 symbol = " "
 
+[os]
+disabled = false
+style = "bg:#3B4252"
+
 [os.symbols]
-Alma = " "
 Alpaquita = " "
 Alpine = " "
 Amazon = " "
@@ -170,25 +174,18 @@ Artix = " "
 CentOS = " "
 Debian = " "
 DragonFly = " "
-Elementary = " "
 Emscripten = " "
 EndeavourOS = " "
 Fedora = " "
 FreeBSD = " "
 Garuda = " "
 Gentoo = " "
-Kali = " "
 Linux = " "
 Mabox = " "
 Macos = " "
-Mageia = " "
 Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
 Mint = " "
-NetBSD = " "
 NixOS = " "
-Nobara = " "
 OpenBSD = "󰈺 "
 openSUSE = " "
 OracleLinux = "󰌷 "
@@ -197,13 +194,11 @@ Raspbian = " "
 Redhat = "󱄛 "
 RedHatEnterprise = "󱄛 "
 Redox = "󰀘 "
-Rocky = " "
 Solus = "󰠳 "
 SUSE = " "
 Ubuntu = " "
 Unknown = " "
 Windows = "󰍲 "
-Zorin = " "
 
 [package]
 symbol = "󰏗 "
@@ -219,6 +214,8 @@ symbol = " "
 
 [python]
 symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
 
 [rlang]
 symbol = "󰟔 "
