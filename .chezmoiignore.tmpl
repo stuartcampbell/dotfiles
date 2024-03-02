@@ -46,3 +46,7 @@ bin/fix-wsl-dns.sh
 .netrc
 {{ end }}
 
+{{ if not .work }}
+bin/beamstatus-ornl
+{{ end }}
+
