@@ -28,10 +28,10 @@ unset rc
 
 [ -r /home/scampbell/.byobu/prompt ] && . /home/scampbell/.byobu/prompt   #byobu-prompt#
 
+# JetBrains Toolbox
 if [ -d "$HOME/.local/share/JetBrains/Toolbox/scripts" ]; then
-	PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+	export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 fi
-export PATH
 
 # Hatch Command Completions
 . ~/.hatch-complete.bash 
@@ -47,7 +47,7 @@ fi
 
 # Hishtory Config
 if [ -d "$HOME/.hishtory" ]; then
-  PATH="$PATH:/$HOME/.hishtory"
+  export PATH="$PATH:/$HOME/.hishtory"
   . "$HOME/.hishtory/config.sh"
 fi
 
