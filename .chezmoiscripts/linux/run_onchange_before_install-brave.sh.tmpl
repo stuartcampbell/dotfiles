@@ -1,0 +1,32 @@
+{{ if and (eq .osid "linux-fedora" "linux-nobara") (not .transient) -}}
+
+#!/bin/sh
+
+# https://brave.com/linux/#fedora-rockyrhel
+
+sudo dnf install dnf-plugins-core
+
+{{ if eq .osid "linux-nobara" -}}
+sudo dnf4 config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+{{ else }}
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+{{ end -}}
+
+sudo dnf install -y brave-browser
+
+{{ end -}}
+
+{{- if and (eq .osid "linux-pop" "linux-ubuntu") (not .transient) -}}
+
+#!/bin/sh
+
+# https://brave.com/linux/#debian-ubuntu-mint
+
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
+sudo apt update
+sudo apt install -y brave-browser
+
+{{ end -}}
