@@ -1,0 +1,7 @@
+# Should 'cheat' always colorize output?
+colorize: true
+
+# Which 'chroma' colorscheme should be applied to the output?
+# Options are available here:
+#   https://github.com/alecthomas/chroma/tree/master/styles
+style: dracula
