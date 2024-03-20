@@ -1,0 +1,19 @@
+{{ if and (eq .chezmoi.os "linux") (not .transient) -}}
+
+#!/bin/bash
+
+# Install system requirements
+
+{{ if (eq .osid "linux-fedora" "linux-nobara") }}
+  sudo dnf install -y automake libtool
+{{ end }}
+
+{{ if (eq .osid "linux-ubuntu" "linux-pop") }}
+  sudo apt install -y automake
+{{ end }}
+  
+
+
+cargo install jnv   # interactive 'jq'
+
+{{ end -}}
