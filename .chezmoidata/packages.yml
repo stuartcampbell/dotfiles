@@ -1,10 +1,12 @@
 packages:
   darwin:
     brews:
+    - 'ansible'
     - 'bat'
     - 'eza'
     - 'git'
     - 'git-lfs'
+    - 'mas'
     - 'starship'
     casks:
     - 'balenaetcher'
