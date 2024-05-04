@@ -5,7 +5,7 @@
 # Install system requirements
 
 {{ if (eq .osid "linux-fedora" "linux-nobara") }}
-  sudo dnf install -y automake libtool
+  sudo dnf install -y cargo automake libtool
 {{ end }}
 
 {{ if (eq .osid "linux-ubuntu" "linux-pop") }}
