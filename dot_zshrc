@@ -30,7 +30,7 @@ if [ -d "$HOME/.rd/bin" ]; then
 fi
 
 # Hatch Command Completions
-. ~/.hatch-complete.bash 
+. ~/.hatch-complete.zsh 
 
 # Rust Cargo 
 test -s $HOME/.cargo/env && . $HOME/.cargo/env || true
