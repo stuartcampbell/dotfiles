@@ -19,8 +19,46 @@ then
 fi
 export PATH
 
+# JetBrains Toolbox
+if [ -d "$HOME/.local/share/JetBrains/Toolbox/scripts" ]; then
+	export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+fi
+
+# Rancher Desktop
+if [ -d "$HOME/.rd/bin" ]; then
+	export PATH="$PATH:$HOME/.rd/bin"
+fi
+
+# Hatch Command Completions
+. ~/.hatch-complete.bash 
+
+# Rust Cargo 
+test -s $HOME/.cargo/env && . $HOME/.cargo/env || true
+
+# Deno (Slack)
+if [ -d "$HOME/.deno" ]; then
+  export DENO_INSTALL="$HOME/.deno"
+  export PATH="$DENO_INSTALL/bin:$PATH"
+fi
+
+# Keychain - frontend to ssh-agent and ssh-add
+if [ "$(command -v keychain)" ]; then
+  eval `keychain -q --eval --agents ssh`
+fi
+
+# Local Aliases
+test -s ~/.aliases && . ~/.aliases || true
+
+# Zoxide - Replacement for 'cd'
+if [ "$(command -v zoxide)" ]; then
+  eval "$(zoxide init zsh)"
+fi
 
 # Starship Prompt
 if [ "$(command -v starship)" ]; then
   eval "$(starship init zsh)"
 fi
+
+# Dracula Theme for FZF
+export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
+
