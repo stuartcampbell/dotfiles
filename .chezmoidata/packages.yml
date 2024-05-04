@@ -1,6 +1,11 @@
 packages:
   darwin:
     brews:
+    - 'bat'
+    - 'eza'
     - 'git'
+    - 'git-lfs'
+    - 'starship'
     casks:
+    - 'balenaetcher'
     - 'google-chrome'
