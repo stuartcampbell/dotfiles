@@ -19,6 +19,7 @@ packages:
       - "cppcheck"
       - "curl"
       - "deno"
+      - "deskpad"
       - "dos2unix"
       - "eza"
       - "ffmpeg"
