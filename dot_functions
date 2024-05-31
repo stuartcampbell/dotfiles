@@ -26,3 +26,20 @@ if [ -n "${PKCS11_LIB+1}" ]; then
   alias yubikey-remove="ssh-add -e $PKCS11_LIB"
   export PKCS11_LIB
 fi
+
+
+{{ if .work }}
+
+## Find and activate the latest tiled conda env
+activate_latest_tiled_env() {
+    # Filter environments, sort them, and activate the most recent one
+    local env_name=$(conda info --envs | grep -- '-tiled' | awk '{print $1}' | sort -t '-' -k1,1n -k2,2n -k3,3n | tail -n 1)
+    if [[ -n "$env_name" ]]; then
+        echo "Activating the latest environment: $env_name"
+        conda activate "$env_name"
+    else
+        echo "No matching environments found."
+    fi
+}
+
+{{ end }}
