@@ -70,7 +70,6 @@ symbol = " "
 [container]
 symbol = " "
 
-
 [crystal]
 symbol = " "
 
@@ -78,6 +77,7 @@ symbol = " "
 symbol = " "
 
 [docker_context]
+disabled = true
 symbol = " "
 style = "bg:#06969A"
 format = '[ $symbol $context ]($style) $path'
