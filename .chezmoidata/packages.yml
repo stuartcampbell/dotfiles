@@ -19,7 +19,6 @@ packages:
       - "cppcheck"
       - "curl"
       - "deno"
-      - "deskpad"
       - "dos2unix"
       - "eza"
       - "ffmpeg"
@@ -96,6 +95,7 @@ packages:
     casks:
       - "1password-cli"
       - "balenaetcher"
+      - "deskpad"
       - "google-chrome"
       - "hyper"
       - "inkscape"
