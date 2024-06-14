@@ -1,11 +1,11 @@
 
-{{ if .osid "darwin }}
+{{ if .osid "darwin" }}
 Include ~/.orbstack/ssh/config
 {{- end }}
 
 {{ "" }}
 
-{{ if .work -}}
+{{ if .work }}
     Include config.d/ornl
     Include config.d/bnl
     Include config.d/nsls2acc
