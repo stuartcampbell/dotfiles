@@ -20,6 +20,7 @@ packages:
       - "curl"
       - "deno"
       - "dos2unix"
+      - "dust"
       - "eza"
       - "ffmpeg"
       - "fzf"
