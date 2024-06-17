@@ -91,6 +91,7 @@ packages:
       - "yt-dlp"
       - "yubico-piv-tool"
       - "zip"
+      - "zoxide"
       - "zsh-completions"
       - "zsh-syntax-highlighting"
     casks:
