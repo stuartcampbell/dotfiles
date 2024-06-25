@@ -50,6 +50,7 @@ packages:
       - "librdkafka"
       - "libyaml"
       - "libyubikey"
+      - "marp-cli"
       - "mas"
       - "molecule"
       - "mongocli"
