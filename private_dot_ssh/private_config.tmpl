@@ -1,7 +1,6 @@
-
-{{ if .osid "darwin" }}
+{{ if .chezmoi.os "darwin" }}
 Include ~/.orbstack/ssh/config
-{{- end }}
+{{ end }}
 
 {{ "" }}
 
@@ -10,10 +9,10 @@ Include ~/.orbstack/ssh/config
     Include config.d/bnl
     Include config.d/nsls2acc
     Include config.d/n2sn
-{{- end }}
+{{ end }}
 {{ if .personal -}}
     Include config.d/home
-{{- end -}}
+{{ end -}}
 
 {{ "" }}
 
@@ -33,4 +32,3 @@ Host *
     # If the initial and all sessions exit, keep the ControlMaster
     # open for 300 seconds before closing.
     ControlPersist 300s
-
