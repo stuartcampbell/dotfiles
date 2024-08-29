@@ -45,6 +45,9 @@ fi
 if [ -d "$HOME/.pixi/bin" ]; then
 	export PATH="$HOME/.pixi/bin:$PATH"
 fi
+if [ "$(command -v pixi)" ]; then
+  eval "$(pixi completion --shell zsh)"
+fi
 
 # Keychain - frontend to ssh-agent and ssh-add
 if [ "$(command -v keychain)" ]; then
