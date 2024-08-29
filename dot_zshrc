@@ -41,6 +41,11 @@ if [ -d "$HOME/.deno" ]; then
   export PATH="$DENO_INSTALL/bin:$PATH"
 fi
 
+# Pixi (conda replacement)
+if [ -d "$HOME/.pixi/bin" ]; then
+	export PATH="$HOME/.pixi/bin:$PATH"
+fi
+
 # Keychain - frontend to ssh-agent and ssh-add
 if [ "$(command -v keychain)" ]; then
   eval `keychain -q --eval --agents ssh`
