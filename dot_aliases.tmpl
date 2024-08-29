@@ -1,6 +1,6 @@
-# 
+#
 # General Aliases
-# 
+#
 
 # replacement for 'ls' (https://eza.rocks)
 if [ "$(command -v eza)" ]; then
@@ -11,9 +11,9 @@ else
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-    alias l.="$LS_CMD -d .* -G"
-    alias ll="$LS_CMD -lh -G"
-    alias ls="$LS_CMD -G "
+    alias l.="$LS_CMD -d .*"
+    alias ll="$LS_CMD -lh"
+    alias ls="$LS_CMD"
 elif [[ $OSTYPE == linux* ]]; then
     alias l.="$LS_CMD -d .* --color=auto"
     alias ll="$LS_CMD -lh --color=auto"
@@ -37,7 +37,7 @@ if [ "$(command -v gist)" ]; then
     alias gist="gist -c"
 fi
 
-# List open ports 
+# List open ports
 alias openports2='netstat -nape --inet'
 alias openports="netstat -tunlp"
 
