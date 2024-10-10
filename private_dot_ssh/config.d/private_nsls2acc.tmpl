@@ -14,6 +14,9 @@ Host olog-acc.nsls2.bnl.gov
 Host shift-acc.nsls2.bnl.gov
   ProxyJump {{ $n2snjump }}
 
+Match host br-rf*.nsls2.bnl.gov
+  ProxyJump {{ $jump1 }}
+
 Match host sputnik*.nsls2.bnl.gov
   ProxyJump {{ $jump1 }}
 
