@@ -1,0 +1,42 @@
+# NERSC Defined Environment Variables
+
+# CFS - /global/cfs/cdirs
+# SCRATCH - /global/cscratch1/sd/$USER (Cori) and /pscratch/sd/<letter>/$USER (Perlmutter)
+
+# System Environment Variables 
+
+# EDITOR set your preferred editor (vim, vi, emacs, nano)
+# EDITOR=/usr/bin/vim
+
+# configure user prompt see https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html
+# The prompt will be - username@hostname>
+# export PS1="\u@\h> "
+
+# useful alias
+alias perlmutter='ssh perlmutter.nersc.gov'
+alias squ="squeue -O 'UserName,State,Name,Partition,NumTasks,NumNodes,BatchHost,TimeUsed,TimeLimit,SubmitTime,StartTime' -u $USER"
+alias sq="squeue -O 'UserName,State,Name,Partition,NumTasks,NumNodes,BatchHost,TimeUsed,TimeLimit,SubmitTime,StartTime'"
+
+# history setting https://www.gnu.org/software/bash/manual/html_node/Bash-History-Builtins.html
+export HISTFILESIZE=1000
+export HISTSIZE=1000
+export HISTTIMEFORMAT="%h %d %H:%M:%S "
+
+# user bin directory
+export PATH=$HOME/.local/bin:$PATH
+
+
+# NERSC_HOST is defined per system, for configuration specific to system please define it here
+
+if [[ $NERSC_HOST = "perlmutter" ]]; then
+	# Perlmutter specific changes go here
+
+	# easybuild generated modules 
+	module use $HOME/.local/easybuild/modules/all/
+#elif [[ $NERSC_HOST = "cori" ]]; then
+	# Cori specific changes go here.
+#elif [[ $NERSC_HOST == "datatran" ]]; then	
+    # data transfer node specific changes go here
+	
+fi
+
