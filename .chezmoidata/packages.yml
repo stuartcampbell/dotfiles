@@ -35,6 +35,7 @@ packages:
       - "go"
       - "golangci-lint"
       - "gsl"
+      - "helmfile"
       - "hdf5"
       - "htop"
       - "httpie"
