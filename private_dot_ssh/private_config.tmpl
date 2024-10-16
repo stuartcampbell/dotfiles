@@ -1,4 +1,4 @@
-{{ if .chezmoi.os "darwin" }}
+{{ if eq .chezmoi.os "darwin" }}
 Include ~/.orbstack/ssh/config
 {{ end }}
 
