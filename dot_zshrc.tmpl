@@ -84,5 +84,6 @@ export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f
 
 
 {{ if (and (eq .chezmoi.os "darwin") (.work) ) }}
+# Definition to make 'kinit' work on BNL Macs
 export KRB5CCNAME=FILE:$HOME/.krb5-ticket
 {{ end }}
