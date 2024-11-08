@@ -122,3 +122,5 @@ packages:
       - "'Microsoft Remote Desktop', id: 1295203466"
       - "'Tailscale', id: 1475387142"
       - "'Todoist', id: 585829637"
+  pipx:
+    - globus-cli
