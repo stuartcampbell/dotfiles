@@ -43,6 +43,15 @@ if [ -d "$HOME/.deno" ]; then
   export PATH="$DENO_INSTALL/bin:$PATH"
 fi
 
+# UV/UVX (python)
+if [ "$(command -v uv)" ]; then
+    eval "$(uv generate-shell-completion zsh)"
+fi
+if [ "$(command -v uvx)" ]; then
+    eval "$(uvx generate-shell-completion zsh)"
+fi
+
+
 # Pixi (conda replacement)
 if [ -d "$HOME/.pixi/bin" ]; then
 	export PATH="$HOME/.pixi/bin:$PATH"
@@ -81,7 +90,6 @@ fi
 
 # Dracula Theme for FZF
 export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
-
 
 {{ if (and (eq .chezmoi.os "darwin") (.work) ) }}
 # Definition to make 'kinit' work on BNL Macs
