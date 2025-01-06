@@ -101,6 +101,7 @@ packages:
       - "balenaetcher"
       - "deskpad"
       - "google-chrome"
+      - "ghostty"
       - "hyper"
       - "inkscape"
       - "kaleidoscope"
