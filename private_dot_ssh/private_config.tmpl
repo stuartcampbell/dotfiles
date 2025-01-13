@@ -24,7 +24,6 @@ HOST *.fedoraproject.org fedorapeople.org *.fedorahosted.org
 
 Host *
     ServerAliveInterval 5
-    GSSAPIAuthentication no
     PreferredAuthentications gssapi-with-mic,publickey,keyboard-interactive,password
     # ControlMaster config
     ControlMaster auto
@@ -32,3 +31,4 @@ Host *
     # If the initial and all sessions exit, keep the ControlMaster
     # open for 300 seconds before closing.
     ControlPersist 300s
+    SetEnv TERM=xterm-256color
