@@ -46,18 +46,13 @@ Match host {{ $sdccjump }} !exec "host -W 1 {{ $internalonly }}"
 {{- $username2 := trim (onepasswordRead "op://Work/BNL Internal Details/Accounts/bnl-type2") -}}
 {{ "" }}
 
-Host {{ $jump1 }}
+Match Host {{ $jump1 }}, {{ $jump2 }}
     User {{ $username1 }}
     ForwardAgent yes
+    PubKeyAuthentication yes
+    GSSAPIAuthentication no
     LocalForward {{ $rdp_port1 }} {{ $winserver1 }}:3389
-    ProxyJump ssh.nsls2.bnl.gov
-    DynamicForward {{ $port }}
-
-Host {{ $jump2 }}
-    User {{ $username1 }}
-    ForwardAgent yes
-    LocalForward {{ $rdp_port1 }} {{ $winserver1 }}:3389
-    ProxyJump ssh.nsls2.bnl.gov
+    ProxyJump ssh-ext.nsls2.bnl.gov
     DynamicForward {{ $port }}
 
 #
