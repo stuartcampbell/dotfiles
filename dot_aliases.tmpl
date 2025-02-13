@@ -79,8 +79,7 @@ alias git-aliases="git config --get-regexp ^alias"
 {{ if eq .chezmoi.os "linux" }}
 # systemd TUI
 alias isd-tui="uvx --python=3.12 isd-tui"
-{{ end }}
-
+{{ end -}}
 
 # Clean up local branches where remote has "gone".
 # TODO: Fix this, doesn't currently work correctly
