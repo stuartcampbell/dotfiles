@@ -76,6 +76,12 @@ alias okta="flatpak run com.okta.developer.CLI"
 # Show what git aliases I have defined
 alias git-aliases="git config --get-regexp ^alias"
 
+{{ if eq .chezmoi.os "linux" }}
+# systemd TUI
+alias isd-tui="uvx --python=3.12 isd-tui"
+{{ end }}
+
+
 # Clean up local branches where remote has "gone".
 # TODO: Fix this, doesn't currently work correctly
 #alias git-clean-local-branches="git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d"
