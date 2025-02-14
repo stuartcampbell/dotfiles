@@ -45,10 +45,10 @@ fi
 
 # UV/UVX (python)
 if [ "$(command -v uv)" ]; then
-    eval "$(uv generate-shell-completion zsh)"
+    eval "$(uv --generate-shell-completion zsh)"
 fi
 if [ "$(command -v uvx)" ]; then
-    eval "$(uvx generate-shell-completion zsh)"
+    eval "$(uvx --generate-shell-completion zsh)"
 fi
 
 # Pixi (conda replacement)
@@ -63,9 +63,6 @@ fi
 if [ "$(command -v keychain)" ]; then
   eval `keychain -q --eval --agents ssh`
 fi
-
-# Local Aliases
-test -s ~/.aliases && . ~/.aliases || true
 
 # Zoxide - Replacement for 'cd'
 if [ "$(command -v zoxide)" ]; then
@@ -108,3 +105,11 @@ if [ -f "$HOME/.local/share/nvwb/nvwb-wrapper.sh" ]; then
     source $HOME/.local/share/nvwb/nvwb-wrapper.sh
 fi
 # >>> nvwb
+
+# Mamba initialization
+if [ "$(command -v mamba > /dev/null 2>&1;)" ]; then
+  eval "$(mamba shell hook zsh)"
+fi
+
+# Local Aliases
+test -s ~/.aliases && . ~/.aliases || true
