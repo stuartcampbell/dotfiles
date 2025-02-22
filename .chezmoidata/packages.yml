@@ -6,7 +6,7 @@ packages:
       - "ansible-lint"
       - "azcopy"
       - "azure-cli"
-      - "bat"
+      - "bat"			# Better cat
       - "bitwarden-cli"
       - "black"
       - "btop"
@@ -18,11 +18,13 @@ packages:
       - "coreutils"
       - "cppcheck"
       - "curl"
+      - "delta"			# Better diff
       - "deno"
       - "dive"
       - "dos2unix"
       - "dust"
-      - "eza"
+      - "eza"            	# Modern replacement for 'ls'
+      - "fd"			# Alternative to 'find'
       - "ffmpeg"
       - "fzf"
       - "feh"
@@ -58,6 +60,7 @@ packages:
       - "libyubikey"
       - "marp-cli"
       - "mas"
+      - "mcfly"			# Better search history
       - "molecule"
       - "mongocli"
       - "mongosh"
