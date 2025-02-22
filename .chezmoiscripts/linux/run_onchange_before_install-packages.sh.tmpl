@@ -1,0 +1,15 @@
+{{ $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+{{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" -}}
+{{ $sudo }}apt-get update
+{{ $sudo }}apt-get install -y {{ range .packages.linux.debian -}}
+{{ . | quote }} {{ end -}}
+{{ end -}}
+
+{{ if eq .osid "linux-centos" "linux-fedora" "linux-rhel" -}}
+{{ $sudo }}dnf install -y {{ range .packages.linux.redhat -}}
+{{ . | quote }} {{ end -}}
+{{ end -}}
