@@ -3,8 +3,8 @@ if status is-interactive
     starship init fish | source
 
     # UV/UVX
-    uv generate-shell-completion fish | source
-    uvx generate-shell-completion fish | source
+    uv --generate-shell-completion fish | source
+    uvx --generate-shell-completion fish | source
 
     # Automatically "Warpify" subshells
     printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "fish"}}\x9c'
