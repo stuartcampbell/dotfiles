@@ -95,6 +95,7 @@ packages:
       - "vim"
       - "wget"
       - "wimlib"
+      - "xan"				# csv tool
       - "xq"
       - "youtube-dl"
       - "yq"
