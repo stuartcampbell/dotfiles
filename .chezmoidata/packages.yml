@@ -4,6 +4,8 @@ packages:
       - "ack"
       - "ansible"
       - "ansible-lint"
+      - "autoconf"
+      - "automake"
       - "azcopy"
       - "azure-cli"
       - "bat"			# Better cat
@@ -65,6 +67,7 @@ packages:
       - "mongocli"
       - "mongosh"
       - "mr"
+      - "nasm"
       - "ncdu"
       - "neofetch"
       - "neovim"
