@@ -81,6 +81,7 @@ packages:
       - "pkg-config"
       - "podman"
       - "qemu"
+      - "ramalama"			# local AI tool
       - "redis"
       - "ripgrep"
       - "ruff"
