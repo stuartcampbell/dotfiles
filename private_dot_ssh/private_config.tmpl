@@ -5,12 +5,13 @@ Include ~/.orbstack/ssh/config
 {{ "" }}
 
 {{ if .work }}
-    Include config.d/ornl
-    Include config.d/bnl
-    Include config.d/nsls2acc
-    Include config.d/n2sn
+Include config.d/ornl
+Include config.d/bnl
+Include config.d/nsls2acc
+Include config.d/n2sn
 {{ end }}
-{{ if .personal -}}
+
+{{ if .personal }}
     Include config.d/home
 {{ end -}}
 
