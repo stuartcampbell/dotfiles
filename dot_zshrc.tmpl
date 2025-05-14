@@ -61,7 +61,8 @@ fi
 
 # Keychain - frontend to ssh-agent and ssh-add
 if [ "$(command -v keychain)" ]; then
-  eval `keychain -q --eval --agents ssh`
+  eval $(keychain -q)
+# eval `keychain -q --eval --agents ssh`
 fi
 
 # Zoxide - Replacement for 'cd'
