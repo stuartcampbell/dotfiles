@@ -130,6 +130,7 @@ packages:
       - "slack"
       - "visual-studio-code"
       - "vivaldi"
+      - "warp"
       - "zotero"
     mas:
       - "'Magnet', id: 441258766"
