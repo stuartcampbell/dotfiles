@@ -51,6 +51,7 @@ packages:
       - "ipmiutil"
       - "jq"
       - "json-fortran"
+      - "jujutsu"             # Newer git 'replacement'
       - "k9s"
       - "kcat"
       - "keychain"
