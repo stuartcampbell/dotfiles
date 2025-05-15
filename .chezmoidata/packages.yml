@@ -85,6 +85,7 @@ packages:
       - "ramalama"			# local AI tool
       - "redis"
       - "ripgrep"
+      - "rpm"           # Yes, RPM on a mac - I know!
       - "ruff"
       - "shellcheck"
       - "skopeo"
