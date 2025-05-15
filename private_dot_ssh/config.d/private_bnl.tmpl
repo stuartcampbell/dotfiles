@@ -14,7 +14,7 @@ Host ssh.bnl.gov
   	# Can't authenticate by Kerberos to BNL ITD gateways
   	GSSAPIAuthentication no
 
-Match host {{ $campus_jump1 }}, {{ $campus_jump2 }}
+Match host {{ $campus_jump1 }},{{ $campus_jump2 }}
   ForwardAgent yes
   PubKeyAuthentication yes
   GSSAPIAuthentication yes
