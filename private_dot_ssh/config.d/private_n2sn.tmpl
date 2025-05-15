@@ -3,13 +3,12 @@
 # 
 
 {{- $internalonly := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/n2sn-internal-only") -}} 
-{{- $sdccjump := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/n2sn-sdcc-proxy") -}}
 {{- $adserver1 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/ActiveDirectory DC 1") -}} 
 {{- $adserver2 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/ActiveDirectory DC 2") -}}  
 {{- $adserver3 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/ActiveDirectory DC 3") -}}
+{{- $winserver := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/Windows Admin Server") -}}
 {{- $rdp_port1 := trim (onepasswordRead "op://Work/BNL Internal Details/Ports/Windows Admin Server RDP Port") -}}
 {{- $campus_workstation := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/Campus Workstation") -}}
-{{- $sdcc_datamgr_server := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/SDCC DataManager") -}}
 {{ "" }} 
 
 Match host ssh.nsls2.bnl.gov exec "host -W 1 {{ $internalonly }}"
@@ -31,6 +30,10 @@ Match host ssh.nsls2.bnl.gov !exec "host -W 1 {{ $internalonly }}"
 
 {{- $jump1 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/n2sn-proxy-1") -}} 
 {{- $jump2 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/n2sn-proxy-2") -}} 
+{{- $campus_jump1 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2-campus-proxy-1") -}}
+{{- $campus_jump2 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2-campus-proxy-2") -}}
+{{- $mgmt_jump1 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2-management-proxy-1") -}} 
+{{- $mgmt_jump2 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2-management-proxy-2") -}} 
 {{- $port := trim (onepasswordRead "op://Work/BNL Internal Details/Ports/n2sn-socks-port") -}} 
 {{- $username1 := trim (onepasswordRead "op://Work/BNL Internal Details/Accounts/bnl") -}}
 {{- $username2 := trim (onepasswordRead "op://Work/BNL Internal Details/Accounts/bnl-type2") -}}
@@ -41,7 +44,17 @@ Match Host {{ $jump1 }}, {{ $jump2 }}
     ForwardAgent yes
     PubKeyAuthentication yes
     GSSAPIAuthentication no
-    ProxyJump ssh-ext.nsls2.bnl.gov
+    LocalForward {{ $rdp_port1 }} {{ $winserver }}:3389
+    ProxyJump ssh.nsls2.bnl.gov
+    DynamicForward {{ $port }}
+
+Match Host {{ $mgmt_jump1 }}, {{ $mgmt_jump2 }}
+    User {{ $username1 }}
+    ForwardAgent yes
+    PubKeyAuthentication yes
+    GSSAPIAuthentication no
+    LocalForward {{ $rdp_port1 }} {{ $winserver }}:3389
+    ProxyJump ssh.nsls2.bnl.gov
     DynamicForward {{ $port }}
 
 #
@@ -54,9 +67,6 @@ Host {{ trim (onepasswordRead "op://Work/BNL Internal Details/Computers/N2SN Wor
     #ForwardX11 yes
     DynamicForward {{ trim (onepasswordRead "op://Work/BNL Internal Details/Ports/n2sn-workstation-socks-port") }}
     ProxyJump {{ $jump1 }}  
-
-Host {{ $sdcc_datamgr_server }}
-    ProxyJump {{ $sdccjump }} 
 
 Match User root Host *.nsls2.bnl.local
     User root
@@ -77,7 +87,7 @@ Match Host *.lbms.bnl.local
 Match Host *.lbms.bnl.gov
   ProxyJump {{ $jump1 }}
 
-Match Host {{ printf "*.nsls2.bnl.gov,!%s,!%s,!%s,!%s,!ssh*.nsls2.bnl.gov" $jump1 $jump2 $sdccjump $campus_workstation}}
+Match Host {{ printf "*.nsls2.bnl.gov,!%s,!%s,!%s,!%s,!%s,!%s,!%s,!ssh*.nsls2.bnl.gov" $mgmt_jump1 $mgmt_jump2 $campus_jump1 $campus_jump2 $jump1 $jump2 $campus_workstation}}
     ForwardAgent yes
     GSSAPIDelegateCredentials yes
     ProxyJump {{ $jump1 }}
