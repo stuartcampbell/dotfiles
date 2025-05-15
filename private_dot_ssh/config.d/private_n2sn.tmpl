@@ -7,7 +7,6 @@
 {{- $adserver1 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/ActiveDirectory DC 1") -}} 
 {{- $adserver2 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/ActiveDirectory DC 2") -}}  
 {{- $adserver3 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/ActiveDirectory DC 3") -}}
-{{- $winserver1 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/Windows Admin Server") -}}
 {{- $rdp_port1 := trim (onepasswordRead "op://Work/BNL Internal Details/Ports/Windows Admin Server RDP Port") -}}
 {{- $campus_workstation := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/Campus Workstation") -}}
 {{- $sdcc_datamgr_server := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/SDCC DataManager") -}}
@@ -26,15 +25,6 @@ Match host ssh.nsls2.bnl.gov !exec "host -W 1 {{ $internalonly }}"
   LocalForward 1288 {{$adserver2}}:88
   LocalForward 1388 {{$adserver3}}:88
 
-Match host {{ $sdccjump }} exec "host -W 1 {{ $internalonly }}"
-    ForwardAgent yes
-    LocalForward {{ $rdp_port1 }} {{ $winserver1 }}:3389
-
-Match host {{ $sdccjump }} !exec "host -W 1 {{ $internalonly }}"
-    ForwardAgent yes
-    ProxyJump ssh.nsls2.bnl.gov
-    LocalForward {{ $rdp_port1 }} {{ $winserver1 }}:3389
-
 #
 # Internal Gateways & Proxies for N2SN
 #
@@ -51,19 +41,12 @@ Match Host {{ $jump1 }}, {{ $jump2 }}
     ForwardAgent yes
     PubKeyAuthentication yes
     GSSAPIAuthentication no
-    LocalForward {{ $rdp_port1 }} {{ $winserver1 }}:3389
     ProxyJump ssh-ext.nsls2.bnl.gov
     DynamicForward {{ $port }}
 
 #
 # Connections to N2SN Systems
 #
-
-Host {{ $winserver1 }}
-    User {{ $username2 }}
-    PubKeyAuthentication no
-    ForwardAgent yes
-    ProxyJump {{ $sdccjump }}
 
 Host {{ trim (onepasswordRead "op://Work/BNL Internal Details/Computers/N2SN Workstation") }}
     GSSAPIDelegateCredentials yes
