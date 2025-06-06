@@ -3,31 +3,44 @@ packages:
     brews:
       - "ack"
       - "ansible"
-      - "ansible-lint"
+      - "ansible-lint"i
+      - "asciinema"		# Record terminal sessions
       - "autoconf"
       - "automake"
+      - "aria2"			# Download utility
       - "azcopy"
       - "azure-cli"
+      - "bandwhich"		# Bandwidth monitor
       - "bat"			# Better cat
       - "bitwarden-cli"
       - "black"
       - "btop"
+      - "buku"			# Bookmark manager
       - "ccache"
       - "chezmoi"
       - "cmake"
       - "cmake-docs"
       - "cookiecutter"
       - "coreutils"
+      - "cowsay"
       - "cppcheck"
       - "curl"
+      - "ddgr"			# DuckDuckGo from cli
       - "delta"			# Better diff
       - "deno"
       - "dive"
+      - "diff-so-fancy"		# I think this is obvious what it does!
       - "dos2unix"
+      - "dua-cli"		# Interactive disk analyzer
+      - "duf"			# Better "df"
       - "dust"
+      - "entr"			# Watch for changes
+      - "exiftool"
       - "eza"            	# Modern replacement for 'ls'
       - "fd"			# Alternative to 'find'
+      - "fdupes"		# Duplicate file finder
       - "ffmpeg"
+      - "figlet"
       - "fzf"
       - "feh"
       - "fish"
@@ -36,8 +49,10 @@ packages:
       - "git"
       - "git-lfs"
       - "gitui"
+      - "glances"
       - "gnutls"
       - "grace"
+      - "grex"			# Regex creator
       - "go"
       - "golangci-lint"
       - "gsl"
@@ -45,30 +60,38 @@ packages:
       - "hdf5"
       - "htop"
       - "httpie"
+      - "hyperfine"		# Command benchmarking
       - "imagemagick"
       - "ipcalc"
       - "ipmitool"
       - "ipmiutil"
       - "jq"
       - "json-fortran"
-      - "jujutsu"             # Newer git 'replacement'
+      - "jujutsu"             	# Newer git 'replacement'
+      - "just"			# Command runner (better 'make')
       - "k9s"
       - "kcat"
       - "keychain"
+      - "khal"			# Calendar client
       - "kubectx"
+      - "lazydocker"		# Docker management
+      - "lazygit"		# Git UI
       - "lftp"
       - "libheif"
       - "librdkafka"
       - "libyaml"
       - "libyubikey"
+      - "lolcat"		# Rainbows and unicorns in the console
       - "marp-cli"
       - "mas"
       - "mcfly"			# Better search history
       - "molecule"
       - "mongocli"
       - "mongosh"
+      - "most"			# Better 'less'
       - "mr"
       - "nasm"
+      - "navi"			# Interactive cheat sheets
       - "ncdu"
       - "neofetch"
       - "neovim"
@@ -81,19 +104,28 @@ packages:
       - "pipx"
       - "pkg-config"
       - "podman"
+      - "procs"			# Process viewer (better 'ps')
       - "qemu"
-      - "ramalama"			# local AI tool
+      - "ramalama"		# local AI tool
+      - "rclone"		# Rsync for cloud storage
       - "redis"
+      - "rip2"			# Safer alternative to 'rm' 
       - "ripgrep"
-      - "rpm"           # Yes, RPM on a mac - I know!
+      - "rpm"          		# Yes, RPM on a mac - I know!
+      - "rsync"			# Newer version than macOS provides
       - "ruff"
+      - "scc"			# Count lines of code
+      - "sd"			# Better 'sed'
       - "shellcheck"
       - "skopeo"
       - "source-highlight"
+      - "speedtest-cli"
       - "starship"
       - "telnet"
+      - "tldr"
       - "the_silver_searcher"
       - "tmux"
+      - "tre-command"		# Directory hierarchy ('tree' alternative)
       - "tree"
       - "unbound"
       - "uv"
@@ -101,8 +133,9 @@ packages:
       - "vim"
       - "wget"
       - "wimlib"
-      - "xan"				# csv tool
+      - "xan"			# csv tool
       - "xq"
+      - "xsel"			# Access X selection clipboard
       - "youtube-dl"
       - "yq"
       - "yt-dlp"
