@@ -52,6 +52,7 @@ packages:
       - "glances"
       - "gnutls"
       - "grace"
+      - "graphviz"
       - "grex"			# Regex creator
       - "go"
       - "golangci-lint"
