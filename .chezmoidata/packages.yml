@@ -154,6 +154,7 @@ packages:
       - "hyper"
       - "inkscape"
       - "kaleidoscope"
+      - "localsend"
       - "meld"
       - "microsoft-edge"
       - "mockoon"
