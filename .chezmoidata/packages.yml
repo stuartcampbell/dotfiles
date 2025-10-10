@@ -1,4 +1,7 @@
 packages:
+  linux:
+    flatpaks:
+      - "org.localsend.localsend_app"
   darwin:
     brews:
       - "ack"
