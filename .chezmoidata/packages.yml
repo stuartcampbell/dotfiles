@@ -84,6 +84,7 @@ packages:
       - "libyaml"
       - "libyubikey"
       - "lolcat"		# Rainbows and unicorns in the console
+      - "lsd"			# lsdeluxe
       - "marp-cli"
       - "mas"
       - "mcfly"			# Better search history
