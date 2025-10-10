@@ -43,6 +43,7 @@ packages:
       - "figlet"
       - "fzf"
       - "feh"
+      - "ffuf"
       - "fish"
       - "gdu"
       - "gh"
