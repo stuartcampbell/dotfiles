@@ -11,10 +11,11 @@ packages:
       - "autoconf"
       - "automake"
       - "aria2"			# Download utility
+      - "ast-grep"
       - "azcopy"
       - "azure-cli"
-      - "bandwhich"		# Bandwidth monitor
-      - "bat"			# Better cat
+      - "bandwhich"		  # Bandwidth monitor
+      - "bat"			      #Better cat
       - "bitwarden-cli"
       - "black"
       - "btop"
@@ -88,6 +89,7 @@ packages:
       - "libyubikey"
       - "lolcat"		# Rainbows and unicorns in the console
       - "lsd"			# lsdeluxe
+      - "luarocks"
       - "marp-cli"
       - "mas"
       - "mcfly"			# Better search history
@@ -143,6 +145,7 @@ packages:
       - "xq"
       - "xsel"			# Access X selection clipboard
       - "youtube-dl"
+      - "yazi"      
       - "yq"
       - "yt-dlp"
       - "yubico-piv-tool"
