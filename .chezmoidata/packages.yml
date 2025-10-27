@@ -24,6 +24,7 @@ packages:
       - "chezmoi"
       - "cmake"
       - "cmake-docs"
+      - "cmatrix"
       - "cookiecutter"
       - "coreutils"
       - "cowsay"
@@ -117,6 +118,7 @@ packages:
       - "ramalama"		# local AI tool
       - "rclone"		# Rsync for cloud storage
       - "redis"
+      - "rig"       # Random Identity Generator
       - "rip2"			# Safer alternative to 'rm' 
       - "ripgrep"
       - "rpm"          		# Yes, RPM on a mac - I know!
@@ -177,6 +179,7 @@ packages:
       - "vivaldi"
       - "warp"
       - "zotero"
+      - "zulip"
     mas:
       - "'Magnet', id: 441258766"
       - "'Microsoft Remote Desktop', id: 1295203466"
