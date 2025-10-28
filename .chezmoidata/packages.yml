@@ -131,6 +131,7 @@ packages:
       - "source-highlight"
       - "speedtest-cli"
       - "starship"
+      - "syft"			# Software Bill of Materials (SBOM) cli
       - "telnet"
       - "tldr"
       - "the_silver_searcher"
