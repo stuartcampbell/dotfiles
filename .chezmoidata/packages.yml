@@ -60,6 +60,7 @@ packages:
       - "grace"
       - "graphviz"
       - "grex"			# Regex creator
+      - "grype"			# Vulnerability scanner for containers and filesystems
       - "go"
       - "golangci-lint"
       - "gsl"
