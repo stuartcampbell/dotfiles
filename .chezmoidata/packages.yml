@@ -33,6 +33,7 @@ packages:
       - "ddgr"			# DuckDuckGo from cli
       - "delta"			# Better diff
       - "deno"
+      - "direnv"
       - "dive"
       - "diff-so-fancy"		# I think this is obvious what it does!
       - "dos2unix"
