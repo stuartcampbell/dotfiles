@@ -2,13 +2,12 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+  . /etc/bashrc
 fi
 
 # User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+  PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
 
@@ -17,33 +16,33 @@ export PATH
 
 # User specific aliases and functions
 if [ -d ~/.bashrc.d ]; then
-	for rc in ~/.bashrc.d/*; do
-		if [ -f "$rc" ]; then
-			. "$rc"
-		fi
-	done
+  for rc in ~/.bashrc.d/*; do
+    if [ -f "$rc" ]; then
+      . "$rc"
+    fi
+  done
 fi
 
 unset rc
 
-[ -r /home/scampbell/.byobu/prompt ] && . /home/scampbell/.byobu/prompt   #byobu-prompt#
+[ -r /home/scampbell/.byobu/prompt ] && . /home/scampbell/.byobu/prompt #byobu-prompt#
 
 # JetBrains Toolbox
 if [ -d "$HOME/.local/share/JetBrains/Toolbox/scripts" ]; then
-	export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+  export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 fi
 
 # Rancher Desktop
 if [ -d "$HOME/.rd/bin" ]; then
-	export PATH="$PATH:$HOME/.rd/bin"
+  export PATH="$PATH:$HOME/.rd/bin"
 fi
 
 # UV/UVX (python)
 if [ "$(command -v uv)" ]; then
-    eval "$(uv generate-shell-completion bash)"
+  eval "$(uv generate-shell-completion bash)"
 fi
 if [ "$(command -v uvx)" ]; then
-    eval "$(uvx generate-shell-completion bash)"
+  eval "$(uvx generate-shell-completion bash)"
 fi
 
 # Hatch Command Completions
@@ -72,7 +71,7 @@ fi
 
 # Keychain - frontend to ssh-agent and ssh-add
 if [ "$(command -v keychain)" ]; then
-  eval `keychain -q --eval --agents ssh`
+  eval $(keychain -q --eval --agents ssh)
 fi
 
 # Local Aliases
@@ -86,6 +85,11 @@ fi
 # Starship Prompt
 if [ "$(command -v starship)" ]; then
   eval "$(starship init bash)"
+fi
+
+# direnv
+if command -v direnv &>/dev/null; then
+  eval "$(direnv hook bash)"
 fi
 
 # ngrok
