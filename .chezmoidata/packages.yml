@@ -116,6 +116,7 @@ packages:
       - "pipx"
       - "pkg-config"
       - "podman"
+      - "posting"		# Terminal based API browser
       - "procs"			# Process viewer (better 'ps')
       - "qemu"
       - "ramalama"		# local AI tool
