@@ -69,6 +69,7 @@ packages:
       - "hdf5"
       - "htop"
       - "httpie"
+      - "httptap"		# Dissects an HTTP request into separate parts
       - "hyperfine"		# Command benchmarking
       - "imagemagick"
       - "ipcalc"
