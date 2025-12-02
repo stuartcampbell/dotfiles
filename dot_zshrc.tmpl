@@ -31,9 +31,6 @@ if [ -d "$HOME/.rd/bin" ]; then
 	export PATH="$PATH:$HOME/.rd/bin"
 fi
 
-# Hatch Command Completions
-. ~/.hatch-complete.zsh
-
 # Rust Cargo
 test -s $HOME/.cargo/env && . $HOME/.cargo/env || true
 

@@ -45,9 +45,6 @@ if [ "$(command -v uvx)" ]; then
   eval "$(uvx generate-shell-completion bash)"
 fi
 
-# Hatch Command Completions
-. ~/.hatch-complete.bash
-
 # Rust Cargo
 test -s $HOME/.cargo/env && . $HOME/.cargo/env || true
 
