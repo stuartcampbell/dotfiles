@@ -5,22 +5,33 @@ packages:
   darwin:
     brews:
       - "ack"
+      - "act"         # Run GitHub Actions locally
       - "ansible"
+      - "ansible-builder" # CLI for building Ansible Execution Environments
+      - "ansible-cmdb"    # Generate static HTML pages from ansible facts
       - "ansible-lint"
+      - "aom"             # Codec library for AV1
+      - "aria2"			# Download utility
+      - "arp-scan"        # Could swap with "arp-scan-rs"
       - "asciinema"		# Record terminal sessions
+      - "asdf"            # Version manager for ruby, node.js, etc...
+      - "ast-grep"        # Abstract Syntax Tree based tool for search, lint and rewriting
+      - "atac"            # Terminal API client
       - "autoconf"
       - "automake"
-      - "aria2"			# Download utility
-      - "ast-grep"
       - "azcopy"
       - "azure-cli"
       - "bandwhich"		  # Bandwidth monitor
       - "bat"			      #Better cat
       - "bitwarden-cli"
       - "black"
+      - "blake3"          # C implementation of BLAKE3 crypto hash function
+      - "boost"
+      - "boost-python3"
       - "btop"
       - "buku"			# Bookmark manager
       - "ccache"
+      - "chafa"     # Terminal graphics renderer
       - "chezmoi"
       - "cmake"
       - "cmake-docs"
@@ -29,15 +40,18 @@ packages:
       - "coreutils"
       - "cowsay"
       - "cppcheck"
+      - "cryptography"    # Crpto stuff for python
+      - "ctop"      # 'top' for containers
       - "curl"
       - "ddgr"			# DuckDuckGo from cli
       - "delta"			# Better diff
       - "deno"
+      - "diff-so-fancy"		# I think this is obvious what it does!
       - "direnv"
       - "dive"
-      - "diff-so-fancy"		# I think this is obvious what it does!
       - "dos2unix"
       - "dua-cli"		# Interactive disk analyzer
+      - "duckdb"
       - "duf"			# Better "df"
       - "dust"
       - "entr"			# Watch for changes
@@ -45,19 +59,30 @@ packages:
       - "eza"            	# Modern replacement for 'ls'
       - "fd"			# Alternative to 'find'
       - "fdupes"		# Duplicate file finder
-      - "ffmpeg"
-      - "figlet"
-      - "fzf"
       - "feh"
-      - "ffuf"
+      - "fern-api"
+      - "ffmpeg"
+      - "fftw"
+      - "ffuf"        # Fast web fuzzer
+      - "figlet"
       - "fish"
+      - "flac"
+      - "fzf"
       - "gdu"
+      - "gemini-cli"
       - "gh"
+      - "giflib"
       - "git"
+      - "git-delta"
+      - "git-gui"
       - "git-lfs"
       - "gitui"
       - "glances"
+      - "gnu-units"
+      - "gnupg"
+      - "gnuplot"
       - "gnutls"
+      - "govc"      # CLI for VMware vSphere
       - "grace"
       - "graphviz"
       - "grex"			# Regex creator
@@ -65,8 +90,10 @@ packages:
       - "go"
       - "golangci-lint"
       - "gsl"
-      - "helmfile"
       - "hdf5"
+      - "helm"
+      - "helmfile"
+      - "hiredis"     # Minimalistic client for Redis
       - "htop"
       - "httpie"
       - "httptap"		# Dissects an HTTP request into separate parts
@@ -75,15 +102,17 @@ packages:
       - "ipcalc"
       - "ipmitool"
       - "ipmiutil"
+      - "jj"             	# Jujutsu - Newer git 'replacement'
       - "jq"
       - "json-fortran"
-      - "jujutsu"             	# Newer git 'replacement'
       - "just"			# Command runner (better 'make')
       - "k9s"
       - "kcat"
       - "keychain"
       - "khal"			# Calendar client
       - "kubectx"
+      - "kubernetes-cli"      # kubectl
+      - "lame"
       - "lazydocker"		# Docker management
       - "lazygit"		# Git UI
       - "lftp"
@@ -91,17 +120,22 @@ packages:
       - "librdkafka"
       - "libyaml"
       - "libyubikey"
+      - "llama.cpp"
       - "lolcat"		# Rainbows and unicorns in the console
       - "lsd"			# lsdeluxe
       - "luarocks"
       - "marp-cli"
       - "mas"
       - "mcfly"			# Better search history
+      - "mlx"       # Array framework for Apple Silicon
+      - "mlx-lm"    # LLMs with MLX
+      - "mole"      # macOS cleanup tool
       - "molecule"
       - "mongocli"
+      - "mongodb-database-tools"
       - "mongosh"
       - "most"			# Better 'less'
-      - "mr"
+      - "mr"        # Multiple repo management tool
       - "nasm"
       - "navi"			# Interactive cheat sheets
       - "ncdu"
@@ -110,8 +144,13 @@ packages:
       - "ninja"
       - "nmap"
       - "node"
+      - "nushell"
       - "openblas"
+      - "opencode"
+      - "openmotif"
+      - "opentofu"
       - "p0f"
+      - "packer"
       - "pandoc"
       - "pipx"
       - "pkg-config"
@@ -121,7 +160,9 @@ packages:
       - "qemu"
       - "ramalama"		# local AI tool
       - "rclone"		# Rsync for cloud storage
+      - "readline"
       - "redis"
+      - "restish"   # CLI for REST-ish HTTP APIs
       - "rig"       # Random Identity Generator
       - "rip2"			# Safer alternative to 'rm' 
       - "ripgrep"
@@ -136,7 +177,9 @@ packages:
       - "speedtest-cli"
       - "starship"
       - "syft"			# Software Bill of Materials (SBOM) cli
+      - "talosctl"
       - "telnet"
+      - "temporal"        # CLI for Temporal server
       - "tldr"
       - "the_silver_searcher"
       - "tmux"
@@ -145,10 +188,16 @@ packages:
       - "unbound"
       - "uv"
       - "vale"
+      - "vegeta"        # HTTP load testing tool
       - "vim"
+      - "viu"           # terminal image viewer
+      - "wakeonlan"
+      - "webp"
       - "wget"
       - "wimlib"
+      - "wireshark"
       - "xan"			# csv tool
+      - "xonsh"
       - "xq"
       - "xsel"			# Access X selection clipboard
       - "youtube-dl"
@@ -156,10 +205,15 @@ packages:
       - "yq"
       - "yt-dlp"
       - "yubico-piv-tool"
+      - "zeromq"
       - "zip"
       - "zoxide"
       - "zsh-completions"
       - "zsh-syntax-highlighting"
+    brews_optional:
+      - "abseil"      # Google C++ library to augment stdlib 
+      - "assimp"      # Library for 3D model formats
+      - "brotli"      # Lossless compression alg by Google
     casks:
       - "1password-cli"
       - "balenaetcher"
