@@ -109,6 +109,16 @@ if [ -f "$HOME/.local/share/nvwb/nvwb-wrapper.sh" ]; then
 fi
 # >>> nvwb
 
+# Antigravity (Google's Agentic VScode clone)
+if [ -d "$HOME/.antigravity/antigravity/bin" ]; then
+	export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+fi
+
+# LM studio CLI
+if [ -d "$HOME/.lmstudio/bin" ]; then
+  export PATH="$HOME/.lmstudio/bin:$PATH"
+fi
+
 # Mamba initialization
 if [ "$(command -v mamba > /dev/null 2>&1;)" ]; then
   eval "$(mamba shell hook zsh)"
