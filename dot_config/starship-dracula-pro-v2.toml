@@ -1,0 +1,243 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Tip: to auto-dim on SSH, set this env var in your shell:
+#   if [ -n "$SSH_CONNECTION" ]; then export STARSHIP_PALETTE=dracula_pro_dim; else export STARSHIP_PALETTE=dracula_pro; fi
+# Then set: palette = "${STARSHIP_PALETTE}"
+
+# Default palette; see note above to let an env var switch palettes for SSH.
+palette = 'dracula_pro'
+
+format = """
+[│](bg:red fg:crust)\
+$os\
+$username\
+${custom.danger}\
+[](bg:peach fg:red)\
+$directory\
+[](bg:yellow fg:peach)\
+$git_branch\
+$git_status\
+[](fg:yellow bg:green)\
+$c\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](fg:green bg:sapphire)\
+$conda\
+[](fg:sapphire bg:lavender)\
+$hostname\
+$time\
+[ ](fg:lavender)\
+$cmd_duration\
+$line_break\
+$character"""
+
+[os]
+disabled = false
+style = "bg:red fg:crust"
+
+[os.symbols]
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[username]
+show_always = true
+# Keep red band; root will also show the custom.danger banner below
+style_user = "bg:red fg:crust"
+style_root = "bg:red fg:crust"
+format = '[ $user]($style)'
+
+# Root/privileged danger indicator (shown only when UID=0)
+[custom.danger]
+command = 'echo "⚠ ROOT"'
+when = 'test "$EUID" = "0" || [ "$(id -u)" = "0" ]'
+style = "bg:pink fg:background bold"
+format = '[$output ]($style)'
+
+[directory]
+style = "bg:peach fg:crust"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "bg:yellow"
+format = '[[ $symbol $branch ](fg:crust bg:yellow)]($style)'
+
+[git_status]
+style = "bg:yellow"
+format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[c]
+symbol = " "
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[php]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[java]
+symbol = " "
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+
+[python]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:sapphire"
+format = '[[ $symbol( $context) ](fg:crust bg:sapphire)]($style)'
+
+[conda]
+symbol = "  "
+style = "fg:crust bg:sapphire"
+format = '[$symbol$environment ]($style)'
+ignore_base = false
+
+# SSH indicator (only when connected via SSH); dimmed inside the lavender band
+[hostname]
+ssh_only = true
+ssh_symbol = " "
+format = '[ $ssh_symbol$hostname ]($style)'
+style = "bg:lavender fg:crust dimmed"
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:lavender"
+format = '[[  $time ](fg:crust bg:lavender)]($style)'
+
+[line_break]
+disabled = true
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:green)'
+error_symbol = '[❯](bold fg:red)'
+vimcmd_symbol = '[❮](bold fg:green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
+vimcmd_replace_symbol = '[❮](bold fg:lavender)'
+vimcmd_visual_symbol = '[❮](bold fg:yellow)'
+
+[cmd_duration]
+show_milliseconds = true
+format = " in $duration "
+style = "bg:lavender"
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000
+
+# ---------- Dracula Pro Palettes ----------
+
+[palettes.dracula_pro]
+background = "#22212C"
+selection  = "#454158"
+foreground = "#F8F8F2"
+comment    = "#7970A9"
+
+red     = "#FF9580"
+green   = "#8AFF80"
+yellow  = "#FFFF80"
+peach   = "#FFCA80"     # used where 'peach' was referenced
+sapphire= "#80FFEA"     # mapped from 'sapphire' to cyan
+lavender= "#9580FF"     # mapped from 'lavender' to purple
+crust   = "#22212C"     # used for foreground accents on colored bands
+
+cyan    = "#80FFEA"
+orange  = "#FFCA80"
+pink    = "#FF80BF"
+purple  = "#9580FF"
+lightRed    = "#FFAA99"
+lightGreen  = "#A2FF99"
+lightYellow = "#FFFF99"
+lightPurple = "#AA99FF"
+lightPink   = "#FF99CC"
+lightCyan   = "#99FFEE"
+
+# Slightly dimmed variant for SSH (use STARSHIP_PALETTE=dracula_pro_dim)
+[palettes.dracula_pro_dim]
+background = "#22212C"
+selection  = "#3b384a"
+foreground = "#E6E6E1"
+comment    = "#6c6495"
+
+# Dim core hues ~20%
+red     = "#FF9F8F"
+green   = "#96FF8F"
+yellow  = "#FFFF8F"
+peach   = "#FFD28F"
+sapphire= "#8CFFF0"
+lavender= "#A59AFF"
+crust   = "#22212C"
+
+cyan    = "#8CFFF0"
+orange  = "#FFD28F"
+pink    = "#FFA3CC"
+purple  = "#A59AFF"
+lightRed    = "#FFB7A8"
+lightGreen  = "#B6FFAD"
+lightYellow = "#FFFFAD"
+lightPurple = "#B4ADFF"
+lightPink   = "#FFB3D6"
+lightCyan   = "#B0FFF3"
