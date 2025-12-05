@@ -14,3 +14,7 @@ end
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 set --export --prepend PATH "/Users/scampbell/.rd/bin"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/scampbell/.lmstudio/bin
+# End of LM Studio CLI section
