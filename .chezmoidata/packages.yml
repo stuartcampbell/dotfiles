@@ -90,6 +90,7 @@ packages:
       - "go"
       - "golangci-lint"
       - "gsl"
+      - "gum"       # glamourous shell scripts 
       - "hdf5"
       - "helm"
       - "helmfile"
