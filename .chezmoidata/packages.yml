@@ -129,6 +129,7 @@ packages:
       - "mas"
       - "mcfly"			# Better search history
       - "mlx"       # Array framework for Apple Silicon
+      - "minicom"	# Serial console application
       - "mlx-lm"    # LLMs with MLX
       - "mole"      # macOS cleanup tool
       - "molecule"
@@ -186,6 +187,7 @@ packages:
       - "tmux"
       - "tre-command"		# Directory hierarchy ('tree' alternative)
       - "tree"
+      - "twine"
       - "unbound"
       - "uv"
       - "vale"
@@ -215,6 +217,7 @@ packages:
       - "abseil"      # Google C++ library to augment stdlib 
       - "assimp"      # Library for 3D model formats
       - "brotli"      # Lossless compression alg by Google
+      - "sentencepiece"		# Unsupervised text tokenizer and detokenizer
     casks:
       - "1password-cli"
       - "balenaetcher"
