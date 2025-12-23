@@ -1,5 +1,10 @@
 packages:
   homebrew:
+    taps:
+      - "charmbracelet/tap"
+      - "hashicorp/tap"
+      - "mongodb/brew"
+      - "tw93/tap"
     common:
       - "ack"
       - "act" # Run GitHub Actions locally
@@ -21,8 +26,6 @@ packages:
       - "bitwarden-cli"
       - "black"
       - "blake3" # C implementation of BLAKE3 crypto hash function
-      - "boost"
-      - "boost-python3"
       - "btop"
       - "buku" # Bookmark manager
       - "ccache"
@@ -121,15 +124,11 @@ packages:
       - "lsd" # lsdeluxe
       - "luarocks"
       - "marp-cli"
-      - "mas"
       - "mcfly" # Better search history
-      - "mlx" # Array framework for Apple Silicon
       - "minicom" # Serial console application
-      - "mlx-lm" # LLMs with MLX
-      - "mole" # macOS cleanup tool
       - "molecule"
       - "mongocli"
-      - "mongodb-database-tools"
+      - "mongodb-database-tools" # requires mongodb/brew tap
       - "mongosh"
       - "most" # Better 'less'
       - "mr" # Multiple repo management tool
@@ -144,9 +143,8 @@ packages:
       - "nushell"
       - "openblas"
       - "opencode"
-      - "openmotif"
       - "opentofu"
-      - "packer"
+      - "packer" # requires hashicorp/tap
       - "pandoc"
       - "pipx"
       - "pixi" # 'conda' replacement
@@ -196,13 +194,10 @@ packages:
       - "wireshark"
       - "xan" # csv tool
       - "xonsh"
-      - "xq"
-      - "youtube-dl"
       - "yazi"
       - "yq"
       - "yt-dlp"
       - "yubico-piv-tool"
-      - "zeromq"
       - "zip"
       - "zoxide"
       - "zsh-completions"
@@ -212,8 +207,11 @@ packages:
       - "ansible-builder" # CLI for building Ansible Execution Environments
       - "ansible-cmdb" # Generate static HTML pages from ansible facts
       - "assimp" # Library for 3D model formats
+      - "boost"
+      - "boost-python3"
       - "brotli" # Lossless compression alg by Google
       - "sentencepiece" # Unsupervised text tokenizer and detokenizer
+      - "zeromq"
   linux:
     flatpaks:
       - "org.localsend.localsend_app"
@@ -242,11 +240,11 @@ packages:
       - "microsoft-edge"
       - "mockoon"
       - "ngrok"
-      - "opensc"
+      - "opensc-app"
       - "orbstack"
       - "postman"
       - "powershell"
-      - "redisinsight"
+      - "redis-insight"
       - "slack"
       - "visual-studio-code"
       - "vivaldi"
