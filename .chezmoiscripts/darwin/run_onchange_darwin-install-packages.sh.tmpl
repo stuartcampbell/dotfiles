@@ -2,6 +2,9 @@
 #!/bin/bash
 
 brew bundle --file=/dev/stdin <<EOF
+{{ range .packages.homebrew.common -}}
+brew {{ . | quote }}
+{{ end -}}
 {{ range .packages.darwin.brews -}}
 brew {{ . | quote }}
 {{ end -}}

@@ -1,37 +1,32 @@
 packages:
-  linux:
-    flatpaks:
-      - "org.localsend.localsend_app"
-  darwin:
-    brews:
+  homebrew:
+    common:
       - "ack"
-      - "act"         # Run GitHub Actions locally
+      - "act" # Run GitHub Actions locally
       - "ansible"
-      - "ansible-builder" # CLI for building Ansible Execution Environments
-      - "ansible-cmdb"    # Generate static HTML pages from ansible facts
       - "ansible-lint"
-      - "aom"             # Codec library for AV1
-      - "aria2"			# Download utility
-      - "arp-scan"        # Could swap with "arp-scan-rs"
-      - "asciinema"		# Record terminal sessions
-      - "asdf"            # Version manager for ruby, node.js, etc...
-      - "ast-grep"        # Abstract Syntax Tree based tool for search, lint and rewriting
-      - "atac"            # Terminal API client
+      - "aom" # Codec library for AV1
+      - "aria2" # Download utility
+      - "arp-scan" # Could swap with "arp-scan-rs"
+      - "asciinema" # Record terminal sessions
+      - "asdf" # Version manager for ruby, node.js, etc...
+      - "ast-grep" # Abstract Syntax Tree based tool for search, lint and rewriting
+      - "atac" # Terminal API client
       - "autoconf"
       - "automake"
       - "azcopy"
       - "azure-cli"
-      - "bandwhich"		  # Bandwidth monitor
-      - "bat"			      #Better cat
+      - "bandwhich" # Bandwidth monitor
+      - "bat" #Better cat
       - "bitwarden-cli"
       - "black"
-      - "blake3"          # C implementation of BLAKE3 crypto hash function
+      - "blake3" # C implementation of BLAKE3 crypto hash function
       - "boost"
       - "boost-python3"
       - "btop"
-      - "buku"			# Bookmark manager
+      - "buku" # Bookmark manager
       - "ccache"
-      - "chafa"     # Terminal graphics renderer
+      - "chafa" # Terminal graphics renderer
       - "chezmoi"
       - "cmake"
       - "cmake-docs"
@@ -40,30 +35,30 @@ packages:
       - "coreutils"
       - "cowsay"
       - "cppcheck"
-      - "cryptography"    # Crpto stuff for python
-      - "ctop"      # 'top' for containers
+      - "cryptography" # Crpto stuff for python
+      - "ctop" # 'top' for containers
       - "curl"
-      - "ddgr"			# DuckDuckGo from cli
-      - "delta"			# Better diff
+      - "ddgr" # DuckDuckGo from cli
+      - "delta" # Better diff
       - "deno"
-      - "diff-so-fancy"		# I think this is obvious what it does!
+      - "diff-so-fancy" # I think this is obvious what it does!
       - "direnv"
       - "dive"
       - "dos2unix"
-      - "dua-cli"		# Interactive disk analyzer
+      - "dua-cli" # Interactive disk analyzer
       - "duckdb"
-      - "duf"			# Better "df"
+      - "duf" # Better "df"
       - "dust"
-      - "entr"			# Watch for changes
+      - "entr" # Watch for changes
       - "exiftool"
-      - "eza"            	# Modern replacement for 'ls'
-      - "fd"			# Alternative to 'find'
-      - "fdupes"		# Duplicate file finder
+      - "eza" # Modern replacement for 'ls'
+      - "fd" # Alternative to 'find'
+      - "fdupes" # Duplicate file finder
       - "feh"
       - "fern-api"
       - "ffmpeg"
       - "fftw"
-      - "ffuf"        # Fast web fuzzer
+      - "ffuf" # Fast web fuzzer
       - "figlet"
       - "fish"
       - "flac"
@@ -82,64 +77,64 @@ packages:
       - "gnupg"
       - "gnuplot"
       - "gnutls"
-      - "govc"      # CLI for VMware vSphere
+      - "govc" # CLI for VMware vSphere
       - "grace"
       - "graphviz"
-      - "grex"			# Regex creator
-      - "grype"			# Vulnerability scanner for containers and filesystems
+      - "grex" # Regex creator
+      - "grype" # Vulnerability scanner for containers and filesystems
       - "go"
       - "golangci-lint"
       - "gsl"
-      - "gum"       # glamourous shell scripts 
+      - "gum" # glamourous shell scripts
       - "hdf5"
       - "helm"
       - "helmfile"
-      - "hiredis"     # Minimalistic client for Redis
+      - "hiredis" # Minimalistic client for Redis
       - "htop"
       - "httpie"
-      - "httptap"		# Dissects an HTTP request into separate parts
-      - "hyperfine"		# Command benchmarking
+      - "httptap" # Dissects an HTTP request into separate parts
+      - "hyperfine" # Command benchmarking
       - "imagemagick"
       - "ipcalc"
       - "ipmitool"
       - "ipmiutil"
-      - "jj"             	# Jujutsu - Newer git 'replacement'
+      - "jj" # Jujutsu - Newer git 'replacement'
       - "jq"
       - "json-fortran"
-      - "just"			# Command runner (better 'make')
+      - "just" # Command runner (better 'make')
       - "k9s"
       - "kcat"
       - "keychain"
-      - "khal"			# Calendar client
+      - "khal" # Calendar client
       - "kubectx"
-      - "kubernetes-cli"      # kubectl
+      - "kubernetes-cli" # kubectl
       - "lame"
-      - "lazydocker"		# Docker management
-      - "lazygit"		# Git UI
+      - "lazydocker" # Docker management
+      - "lazygit" # Git UI
       - "lftp"
       - "libheif"
       - "librdkafka"
       - "libyaml"
       - "libyubikey"
       - "llama.cpp"
-      - "lolcat"		# Rainbows and unicorns in the console
-      - "lsd"			# lsdeluxe
+      - "lolcat" # Rainbows and unicorns in the console
+      - "lsd" # lsdeluxe
       - "luarocks"
       - "marp-cli"
       - "mas"
-      - "mcfly"			# Better search history
-      - "mlx"       # Array framework for Apple Silicon
-      - "minicom"	# Serial console application
-      - "mlx-lm"    # LLMs with MLX
-      - "mole"      # macOS cleanup tool
+      - "mcfly" # Better search history
+      - "mlx" # Array framework for Apple Silicon
+      - "minicom" # Serial console application
+      - "mlx-lm" # LLMs with MLX
+      - "mole" # macOS cleanup tool
       - "molecule"
       - "mongocli"
       - "mongodb-database-tools"
       - "mongosh"
-      - "most"			# Better 'less'
-      - "mr"        # Multiple repo management tool
+      - "most" # Better 'less'
+      - "mr" # Multiple repo management tool
       - "nasm"
-      - "navi"			# Interactive cheat sheets
+      - "navi" # Interactive cheat sheets
       - "ncdu"
       - "neofetch"
       - "neovim"
@@ -151,60 +146,59 @@ packages:
       - "opencode"
       - "openmotif"
       - "opentofu"
-      - "p0f"
       - "packer"
       - "pandoc"
       - "pipx"
+      - "pixi" # 'conda' replacement
       - "pkg-config"
       - "podman"
-      - "posting"		# Terminal based API browser
-      - "procs"			# Process viewer (better 'ps')
+      - "posting" # Terminal based API browser
+      - "procs" # Process viewer (better 'ps')
       - "qemu"
-      - "ramalama"		# local AI tool
-      - "rclone"		# Rsync for cloud storage
+      - "ramalama" # local AI tool
+      - "rclone" # Rsync for cloud storage
       - "readline"
       - "redis"
-      - "restish"   # CLI for REST-ish HTTP APIs
-      - "rig"       # Random Identity Generator
-      - "rip2"			# Safer alternative to 'rm' 
+      - "restish" # CLI for REST-ish HTTP APIs
+      - "rig" # Random Identity Generator
+      - "rip2" # Safer alternative to 'rm'
       - "ripgrep"
-      - "rpm"          		# Yes, RPM on a mac - I know!
-      - "rsync"			# Newer version than macOS provides
+      - "rpm" # Yes, RPM on a mac - I know!
+      - "rsync" # Newer version than macOS provides
       - "ruff"
-      - "scc"			# Count lines of code
-      - "sd"			# Better 'sed'
+      - "scc" # Count lines of code
+      - "sd" # Better 'sed'
       - "shellcheck"
       - "skopeo"
       - "source-highlight"
       - "speedtest-cli"
       - "starship"
-      - "syft"			# Software Bill of Materials (SBOM) cli
+      - "syft" # Software Bill of Materials (SBOM) cli
       - "talosctl"
       - "telnet"
-      - "temporal"        # CLI for Temporal server
+      - "temporal" # CLI for Temporal server
       - "tldr"
       - "the_silver_searcher"
       - "tmux"
-      - "tre-command"		# Directory hierarchy ('tree' alternative)
+      - "tre-command" # Directory hierarchy ('tree' alternative)
       - "tree"
       - "twine"
       - "unbound"
       - "uv"
       - "vale"
-      - "vegeta"        # HTTP load testing tool
+      - "vegeta" # HTTP load testing tool
       - "vim"
-      - "viu"           # terminal image viewer
+      - "viu" # terminal image viewer
       - "wakeonlan"
       - "webp"
       - "wget"
       - "wimlib"
       - "wireshark"
-      - "xan"			# csv tool
+      - "xan" # csv tool
       - "xonsh"
       - "xq"
-      - "xsel"			# Access X selection clipboard
       - "youtube-dl"
-      - "yazi"      
+      - "yazi"
       - "yq"
       - "yt-dlp"
       - "yubico-piv-tool"
@@ -213,11 +207,27 @@ packages:
       - "zoxide"
       - "zsh-completions"
       - "zsh-syntax-highlighting"
-    brews_optional:
-      - "abseil"      # Google C++ library to augment stdlib 
-      - "assimp"      # Library for 3D model formats
-      - "brotli"      # Lossless compression alg by Google
-      - "sentencepiece"		# Unsupervised text tokenizer and detokenizer
+    extras:
+      - "abseil" # Google C++ library to augment stdlib
+      - "ansible-builder" # CLI for building Ansible Execution Environments
+      - "ansible-cmdb" # Generate static HTML pages from ansible facts
+      - "assimp" # Library for 3D model formats
+      - "brotli" # Lossless compression alg by Google
+      - "sentencepiece" # Unsupervised text tokenizer and detokenizer
+  linux:
+    flatpaks:
+      - "org.localsend.localsend_app"
+    brews:
+      - "xsel" # X11 selection clipboard (Linux/Xorg only)
+      - "p0f" # Passive OS fingerprinting (Linux networking assumptions)
+  darwin:
+    brews:
+      - "mas" # Mac App Store CLI
+      - "mlx" # Array framework for Apple Silicon
+      - "mlx-lm" # LLMs with MLX
+      - "mole" # macOS cleanup tool
+      - "openmotif" # macOS-only in Homebrew
+      - "xq" # macOS-only wrapper (jq + XML tooling)
     casks:
       - "1password-cli"
       - "balenaetcher"
@@ -245,8 +255,9 @@ packages:
       - "zulip"
     mas:
       - "'Magnet', id: 441258766"
-      - "'Microsoft Remote Desktop', id: 1295203466"
+      - "'Windows', id: 1295203466" # Previously Remote Desktop
       - "'Tailscale', id: 1475387142"
       - "'Todoist', id: 585829637"
-  pipx:
-    - globus-cli
+  windows:
+    winget:
+      - "prefix-dev.pixi"
