@@ -21,6 +21,7 @@ Brewfile
 .hushlogin
 .i3
 .local/share/fonts
+bin/webcam-blade.sh
 {{ end }}
 
 {{ if ne .chezmoi.os "windows" }}
@@ -48,4 +49,3 @@ bin/fix-wsl-dns.sh
 {{ if not .work }}
 bin/beamstatus-ornl
 {{ end }}
-
