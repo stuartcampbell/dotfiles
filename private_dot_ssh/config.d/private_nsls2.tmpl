@@ -51,7 +51,7 @@ Match host {{ $campus_jump1 }},{{ $campus_jump2 }}
   ForwardAgent yes
   PubKeyAuthentication yes
   GSSAPIAuthentication yes
-  LocalForward {{ $rdp_port }} {{ $winserver }}:3389
+  LocalForward {{ $rdp_port1 }} {{ $winserver }}:3389
   DynamicForward {{ trim (onepasswordRead "op://Work/BNL Internal Details/Ports/campus-socks-port") }}
 
 # If the host is not reachable, use the BNL gateway
