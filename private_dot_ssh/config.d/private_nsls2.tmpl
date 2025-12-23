@@ -34,6 +34,7 @@ Match host ssh.nsls2.bnl.gov !exec "host -W 1 {{ $internalonly }}"
 {{- $mgmt_jump1 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2-management-proxy-1") -}}
 {{- $mgmt_jump2 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2-management-proxy-2") -}}
 {{- $n2sn_socks_port := trim (onepasswordRead "op://Work/BNL Internal Details/Ports/n2sn-socks-port") -}}
+{{- $nsls2acc_socks_port := trim (onepasswordRead "op://Work/BNL Internal Details/Ports/nsls2acc-socks-port") -}}
 {{- $username1 := trim (onepasswordRead "op://Work/BNL Internal Details/Accounts/bnl") -}}
 {{- $username2 := trim (onepasswordRead "op://Work/BNL Internal Details/Accounts/bnl-type2") -}}
 {{ "" }}
