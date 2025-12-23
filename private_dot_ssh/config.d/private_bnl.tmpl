@@ -1,9 +1,5 @@
-# SSH config for BNL (Campus) 
+# SSH config for BNL (Campus)
 
-{{- $winserver := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/Windows Admin Server on Campus") -}}
-{{- $rdp_port := trim (onepasswordRead "op://Work/BNL Internal Details/Ports/Windows Admin Server on Campus RDP Port") -}}
-{{- $campus_jump1 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2-campus-proxy-1") -}}
-{{- $campus_jump2 := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/nsls2-campus-proxy-2") -}}
 {{- $campus_workstation := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/Campus Workstation") -}}
 {{ "" }}
 
@@ -13,23 +9,6 @@ Host ssh.bnl.gov
   	PubKeyAuthentication yes
   	# Can't authenticate by Kerberos to BNL ITD gateways
   	GSSAPIAuthentication no
-
-Match host {{ $campus_jump1 }},{{ $campus_jump2 }}
-  ForwardAgent yes
-  PubKeyAuthentication yes
-  GSSAPIAuthentication yes
-  LocalForward {{ $rdp_port }} {{ $winserver }}:3389
-  DynamicForward {{ trim (onepasswordRead "op://Work/BNL Internal Details/Ports/campus-socks-port") }}
-
-
-# If the host is not reachable, use the BNL gateway 
-#Match host {{ $campus_jump1 }} exec "! host {{ $campus_jump1 }} >/dev/null 2>&1"
-Match host {{ $campus_jump2 }} exec "! nc -z {{ $campus_jump2 }} 22 >/dev/null 2>&1"
-    ProxyJump ssh.bnl.gov
-
-#Match host {{ $campus_jump2 }} exec "! host {{ $campus_jump2 }} >/dev/null 2>&1"
-Match host {{ $campus_jump2 }} exec "! nc -z {{ $campus_jump2 }} 22 >/dev/null 2>&1"
-    ProxyJump ssh.bnl.gov
 
 #
 # Office Workstation
@@ -42,9 +21,3 @@ Match Host {{ $campus_workstation }} !exec "host -W 1 %h"
 Host {{ $campus_workstation }}
 	Hostname {{ $campus_workstation }}
 	ForwardAgent yes
-	
-#
-# NSLS-II internal/campus hosts
-# 
-Host *-int.nsls2.bnl.gov
-  ProxyJump ssh.bnl.gov
