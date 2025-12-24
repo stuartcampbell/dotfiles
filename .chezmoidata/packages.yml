@@ -26,6 +26,7 @@ packages:
       - "bitwarden-cli"
       - "black"
       - "blake3" # C implementation of BLAKE3 crypto hash function
+      - "block-goose-cli"
       - "btop"
       - "buku" # Bookmark manager
       - "ccache"
@@ -229,6 +230,7 @@ packages:
     casks:
       - "1password-cli"
       - "balenaetcher"
+      - "block-goose"
       - "deskpad"
       - "google-chrome"
       - "ghostty"
