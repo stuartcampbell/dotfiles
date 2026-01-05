@@ -234,6 +234,7 @@ packages:
       - "deskpad"
       - "google-chrome"
       - "ghostty"
+      - "helium-browser"
       - "hyper"
       - "inkscape"
       - "kaleidoscope"
