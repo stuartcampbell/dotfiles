@@ -5,10 +5,12 @@ Include ~/.orbstack/ssh/config
 {{ "" }}
 
 {{ if .work }}
+{{- if eq .chezmoi.os "darwin" }}
+Include "/Users/scampbell/Library/Application Support/NVIDIA/Sync/config/ssh_config"
+{{- end }}
 Include config.d/ornl
 Include config.d/bnl
-Include config.d/nsls2acc
-Include config.d/n2sn
+Include config.d/nsls2
 {{ end }}
 
 {{ if .personal }}
