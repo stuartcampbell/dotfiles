@@ -199,8 +199,10 @@ packages:
       - "yq"
       - "yt-dlp"
       - "yubico-piv-tool"
+      - "zellij"
       - "zip"
       - "zoxide"
+      - "zsh-autosuggestions"
       - "zsh-completions"
       - "zsh-syntax-highlighting"
     extras:
@@ -213,6 +215,11 @@ packages:
       - "brotli" # Lossless compression alg by Google
       - "sentencepiece" # Unsupervised text tokenizer and detokenizer
       - "zeromq"
+    fonts:
+      - "font-caskaydia-mono-nerd-font"
+      - "font-fira-code-nerd-font"
+      - "font-jetbrains-mono-nerd-font"
+      - "font-ubuntu-mono-nerd-font"
   linux:
     flatpaks:
       - "org.localsend.localsend_app"
@@ -252,13 +259,13 @@ packages:
       - "visual-studio-code"
       - "vivaldi"
       - "warp"
+      - "wezterm"
       - "zotero"
       - "zulip"
     mas:
       - "'Magnet', id: 441258766"
       - "'Windows', id: 1295203466" # Previously Remote Desktop
       - "'Tailscale', id: 1475387142"
-      - "'Todoist', id: 585829637"
   windows:
     winget:
       - "prefix-dev.pixi"
