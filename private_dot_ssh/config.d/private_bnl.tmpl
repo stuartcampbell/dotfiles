@@ -13,11 +13,17 @@ Host ssh.bnl.gov
 #
 # Office Workstation
 #
-Match Host {{ $campus_workstation }} !exec "host -W 1 %h"
-	ProxyJump ssh.bnl.gov
+Host {{ $campus_workstation }}
+    Hostname {{ $campus_workstation }}
 	ForwardAgent yes
 	DynamicForward {{ trim (onepasswordRead "op://Work/BNL Internal Details/Ports/campus-socks-port") }}
 
-Host {{ $campus_workstation }}
-	Hostname {{ $campus_workstation }}
-	ForwardAgent yes
+    # If direct TCP to {{ $campus_workstation }}:22 works, use it.
+    # Otherwise, fall back to jumping via ssh.bnl.gov.
+    # NOTE: Not using a "Match" statement as NVIDIA Sync (which uses a 'go' library) cannot handle them.
+    ProxyCommand /bin/sh -c 'nc -z -w 1 %h %p 2>/dev/null && exec nc %h %p || exec ssh -W %h:%p ssh.bnl.gov'
+
+    # optional: fail fast
+    ConnectTimeout 3
+    ServerAliveInterval 5
+    ServerAliveCountMax 2

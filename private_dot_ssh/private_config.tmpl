@@ -2,7 +2,7 @@
 Include ~/.orbstack/ssh/config
 {{ end }}
 
-{{ "" }}
+{{- "" -}}
 
 {{ if .work }}
 {{- if eq .chezmoi.os "darwin" }}
@@ -10,26 +10,27 @@ Include "/Users/scampbell/Library/Application Support/NVIDIA/Sync/config/ssh_con
 {{- end }}
 Include config.d/ornl
 Include config.d/bnl
-Include config.d/nsls2
+#Include config.d/nsls2
 {{ end }}
 
 {{ if .personal }}
-    Include config.d/home
-{{ end -}}
+Include config.d/home
+{{ end }}
 
 {{ "" }}
 
-HOST *.fedoraproject.org fedorapeople.org *.fedorahosted.org
+Host *.fedoraproject.org fedorapeople.org *.fedorahosted.org
 	User sic
 	IdentityFile ~/.ssh/id_rsa_fedora.pub
 	IdentitiesOnly yes
 {{- if eq .chezmoi.os "darwin" }}
-	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock" 
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 {{ end -}}
 {{- if eq .chezmoi.os "linux" }}
 	IdentityAgent ~/.1password/agent.sock
 {{ end -}}
 
+# Default catch-all settings (that have not been set somewhere else)
 Host *
     ServerAliveInterval 5
     PreferredAuthentications gssapi-with-mic,publickey,keyboard-interactive,password
