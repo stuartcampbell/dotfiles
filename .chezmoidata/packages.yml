@@ -5,6 +5,7 @@ packages:
       - "hashicorp/tap"
       - "mongodb/brew"
       - "tw93/tap"
+      - "sinelaw/fresh"    # Fresh Editor
     common:
       - "ack"
       - "act" # Run GitHub Actions locally
@@ -56,6 +57,7 @@ packages:
       - "entr" # Watch for changes
       - "exiftool"
       - "eza" # Modern replacement for 'ls'
+      - "fastfetch"
       - "fd" # Alternative to 'find'
       - "fdupes" # Duplicate file finder
       - "feh"
@@ -66,6 +68,7 @@ packages:
       - "figlet"
       - "fish"
       - "flac"
+      - "fresh"    # TUI editor/IDE
       - "fzf"
       - "gdu"
       - "gemini-cli"
