@@ -84,6 +84,11 @@ alias git-aliases="git config --get-regexp ^alias"
 alias isd-tui="uvx --python=3.12 isd-tui"
 {{ end -}}
 
+
+{{ if eq .chezmoi.os "darwin" }}
+alias unquarantine="xattr -d com.apple.quarantine "
+{{ end }} 
+
 # Clean up local branches where remote has "gone".
 # TODO: Fix this, doesn't currently work correctly
 #alias git-clean-local-branches="git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d"
