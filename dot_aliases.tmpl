@@ -20,6 +20,9 @@ elif [[ $OSTYPE == linux* ]]; then
     alias ls="$LS_CMD --color=auto"
 fi
 
+# Python/UV
+alias vnv="uv venv --python 3.14 --python-preference only-managed venv && source venv/bin/activate"
+
 if [ "$(command -v nvim)" ]; then
     alias vi=nvim
     export EDITOR=nvim
