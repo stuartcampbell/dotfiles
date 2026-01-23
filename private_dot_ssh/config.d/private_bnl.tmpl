@@ -1,6 +1,10 @@
 # SSH config for BNL (Campus)
 
 {{- $campus_workstation := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/Campus Workstation") -}}
+{{- $adserver1 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/ActiveDirectory DC 1") -}}
+{{- $adserver2 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/ActiveDirectory DC 2") -}}
+{{- $adserver3 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/ActiveDirectory DC 3") -}}
+
 {{ "" }}
 
 Host ssh.bnl.gov
@@ -8,7 +12,10 @@ Host ssh.bnl.gov
     # Can authenticate by pubkey to gateways
   	PubKeyAuthentication yes
   	# Can't authenticate by Kerberos to BNL ITD gateways
-  	GSSAPIAuthentication no
+  	GSSAPIAuthentication yes
+    LocalForward 1188 {{$adserver1}}:88
+    LocalForward 1288 {{$adserver2}}:88
+    LocalForward 1388 {{$adserver3}}:88
 
 #
 # Office Workstation
