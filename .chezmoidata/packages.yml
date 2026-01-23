@@ -4,8 +4,9 @@ packages:
       - "charmbracelet/tap"
       - "hashicorp/tap"
       - "mongodb/brew"
+      - "TimidRobot/tap" # cmc - ControlMaster Controller
       - "tw93/tap"
-      - "sinelaw/fresh"    # Fresh Editor
+      - "sinelaw/fresh" # Fresh Editor
     common:
       - "ack"
       - "act" # Run GitHub Actions locally
@@ -36,6 +37,7 @@ packages:
       - "cmake"
       - "cmake-docs"
       - "cmatrix"
+      - "cmc" # SSH Control Master Controller
       - "cookiecutter"
       - "coreutils"
       - "cowsay"
@@ -68,7 +70,7 @@ packages:
       - "figlet"
       - "fish"
       - "flac"
-      - "fresh"    # TUI editor/IDE
+      - "fresh" # TUI editor/IDE
       - "fzf"
       - "gdu"
       - "gemini-cli"
