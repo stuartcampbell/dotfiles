@@ -8,18 +8,19 @@
 [alias]
 	update-submodules = submodule update --init --recursive
 	upgrade-submodules = submodule update --init --remote
-	
+
 	# The missing command <3
 	unstage = reset HEAD --
-	
+
 	# Undo modifications to a file
 	undo = checkout --
-	
+
 	# Checkout shortcut
 	co = checkout
 
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	
+
+	permission-reset = !git diff -p -R --no-ext-diff --no-color --diff-filter=M | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
 
 [branch]
     # Always merge using rebase
