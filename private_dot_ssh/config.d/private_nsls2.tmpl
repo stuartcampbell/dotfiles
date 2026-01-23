@@ -2,26 +2,16 @@
 # External Gateways for N2SN
 #
 
-{{- $internalonly := trim (onepasswordRead "op://Work/BNL Internal Details/Jump Hosts/n2sn-internal-only") -}}
-{{- $adserver1 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/ActiveDirectory DC 1") -}}
-{{- $adserver2 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/ActiveDirectory DC 2") -}}
-{{- $adserver3 := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/ActiveDirectory DC 3") -}}
 {{- $winserver := trim (onepasswordRead "op://Work/BNL Internal Details/Computers/Windows Admin Server") -}}
 {{- $rdp_port1 := trim (onepasswordRead "op://Work/BNL Internal Details/Ports/Windows Admin Server RDP Port") -}}
 {{ "" }}
 
-Match host ssh.nsls2.bnl.gov exec "host -W 1 {{ $internalonly }}"
-    HostName {{ $internalonly }}
+Host ssh.nsls2.bnl.gov
     PubKeyAuthentication yes
     GSSAPIAuthentication yes
-
-Match host ssh.nsls2.bnl.gov !exec "host -W 1 {{ $internalonly }}"
-  HostName ssh.nsls2.bnl.gov
-  PubKeyAuthentication yes
-  GSSAPIAuthentication no
-  LocalForward 1188 {{$adserver1}}:88
-  LocalForward 1288 {{$adserver2}}:88
-  LocalForward 1388 {{$adserver3}}:88
+    #GSSAPITrustDNS yes
+    # We can explicitly set the hostname to avoid issues with roundrobin
+    Hostname ssh1-ext.nsls2.bnl.gov
 
 #
 # Internal Gateways & Proxies for N2SN
@@ -39,7 +29,7 @@ Match host ssh.nsls2.bnl.gov !exec "host -W 1 {{ $internalonly }}"
 {{- $username2 := trim (onepasswordRead "op://Work/BNL Internal Details/Accounts/bnl-type2") -}}
 {{ "" }}
 
-Match Host {{ $mgmt_jump1 }},{{ $mgmt_jump2 }}
+Host {{ $mgmt_jump1 }} {{ $mgmt_jump2 }}
     User {{ $username1 }}
     ForwardAgent yes
     PubKeyAuthentication yes
@@ -48,20 +38,19 @@ Match Host {{ $mgmt_jump1 }},{{ $mgmt_jump2 }}
     ProxyJump ssh.nsls2.bnl.gov
     DynamicForward {{ $n2sn_socks_port }}
 
-Match host {{ $campus_jump1 }},{{ $campus_jump2 }}
-  ForwardAgent yes
-  PubKeyAuthentication yes
-  GSSAPIAuthentication yes
-  LocalForward {{ $rdp_port1 }} {{ $winserver }}:3389
-  DynamicForward {{ trim (onepasswordRead "op://Work/BNL Internal Details/Ports/campus-socks-port") }}
+#Host {{ $campus_jump1 }} {{ $campus_jump2 }}
+#  ForwardAgent yes
+#  PubKeyAuthentication yes
+#  GSSAPIAuthentication yes
+#  LocalForward {{ $rdp_port1 }} {{ $winserver }}:3389
+#  DynamicForward {{ trim (onepasswordRead "op://Work/BNL Internal Details/Ports/campus-socks-port") }}
 
 # If the host is not reachable, use the BNL gateway
-#Match host {{ $campus_jump1 }} exec "! host {{ $campus_jump1 }} >/dev/null 2>&1"
-Match host {{ $campus_jump2 }} exec "! nc -z {{ $campus_jump2 }} 22 >/dev/null 2>&1"
-    ProxyJump ssh.bnl.gov
+#Host {{ $campus_jump2 }} exec "! nc -z {{ $campus_jump2 }} 22 >/dev/null 2>&1"
+#    ProxyJump ssh.bnl.gov
 
 
-Match Host {{ $nsls2acc_jump1 }},{{ $nsls2acc_jump2 }}
+Host {{ $nsls2acc_jump1 }} {{ $nsls2acc_jump2 }}
 	ProxyJump ssh-acc.nsls2.bnl.gov
 	DynamicForward {{ $nsls2acc_socks_port }}
 
@@ -69,32 +58,24 @@ Match Host {{ $nsls2acc_jump1 }},{{ $nsls2acc_jump2 }}
 # Connections to NSLS-II Systems
 #
 
-Match User root Host *.nsls2.bnl.local
-    User root
-    # Root auth is pubkey-only, private key comes from Yubikey loaded in agent
-    PubKeyAuthentication yes
-    ForwardAgent yes
-    GSSAPIDelegateCredentials no
-    ProxyJump {{ $mgmt_jump1 }}
-
-Match Host *.nsls2.bnl.local
+Host *.nsls2.bnl.local
   ForwardAgent yes
   GSSAPIDelegateCredentials yes
   ProxyJump ssh.nsls2.bnl.gov
 
-Match Host *.lbms.bnl.local
+Host *.lbms.bnl.local
   ProxyJump {{ $mgmt_jump1 }}
 
-Match Host *.lbms.bnl.gov
+Host *.lbms.bnl.gov
   ProxyJump {{ $mgmt_jump1 }}
 
-Match host br-rf*.nsls2.bnl.gov
+Host br-rf*.nsls2.bnl.gov
   ProxyJump {{ $nsls2acc_jump1 }}
 
-Match host sputnik*.nsls2.bnl.gov
+Host sputnik*.nsls2.bnl.gov
   ProxyJump {{ $nsls2acc_jump1 }}
 
-Match host ansible-acc*.nsls2.bnl.gov
+Host ansible-acc*.nsls2.bnl.gov
   ProxyJump {{ $nsls2acc_jump1 }}
 
 Host ssh-acc.nsls2.bnl.gov
@@ -106,7 +87,7 @@ Host ssh-acc.nsls2.bnl.gov
 Host *-int.nsls2.bnl.gov
   ProxyJump ssh.bnl.gov
 
-Match Host {{ printf "*.nsls2.bnl.gov,!%s,!%s,!%s,!%s,!%s,!%s,!%s,!%s,!ssh*.nsls2.bnl.gov,!*-int.nsls2.bnl.gov" $mgmt_jump1 $mgmt_jump2 $nsls2acc_jump1 $nsls2acc_jump2 $campus_jump1 $campus_jump2}}
+Host {{ printf "*.nsls2.bnl.gov !%s !%s !%s !%s !%s !%s !ssh*.nsls2.bnl.gov !*-int.nsls2.bnl.gov" $mgmt_jump1 $mgmt_jump2 $nsls2acc_jump1 $nsls2acc_jump2 $campus_jump1 $campus_jump2}}
     ForwardAgent yes
     GSSAPIDelegateCredentials yes
     ProxyJump {{ $mgmt_jump1 }}
