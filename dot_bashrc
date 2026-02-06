@@ -39,10 +39,10 @@ fi
 
 # UV/UVX (python)
 if [ "$(command -v uv)" ]; then
-  eval "$(uv generate-shell-completion bash)"
+  eval "$(uv --generate-shell-completion bash)"
 fi
 if [ "$(command -v uvx)" ]; then
-  eval "$(uvx generate-shell-completion bash)"
+  eval "$(uvx --generate-shell-completion bash)"
 fi
 
 # Rust Cargo
