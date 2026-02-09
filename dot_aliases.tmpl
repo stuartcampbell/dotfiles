@@ -54,6 +54,7 @@ fi
 
 # SSH using password authentication
 alias sshpw="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no "
+alias ssh-challenge="ssh -o PubkeyAuthentication=no -o ChallengeResponseAuthentication=yes "
 alias ssh-nocheck="ssh -o StrictHostKeyChecking=no "
 alias ssh-noconfig="ssh -F /dev/null "
 
