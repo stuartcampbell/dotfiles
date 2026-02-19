@@ -79,6 +79,11 @@ if [ "$(command -v zoxide)" ]; then
   eval "$(zoxide init bash)"
 fi
 
+# MISE
+if [ "$(command -v mise)" ]; then
+  eval "$(mise activate bash)"
+fi 
+
 # Starship Prompt
 if [ "$(command -v starship)" ]; then
   eval "$(starship init bash)"
