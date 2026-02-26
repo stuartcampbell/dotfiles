@@ -1,6 +1,7 @@
 packages:
   homebrew:
     taps:
+      - "anomalyco/tap"  # OpenCode Official Tap
       - "charmbracelet/tap"
       - "hashicorp/tap"
       - "mongodb/brew"
