@@ -11,8 +11,12 @@ if status is-interactive
 
 end
 
+# Go bin directory
+fish_add_path ~/go/bin
+
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-set --export --prepend PATH "/Users/scampbell/.rd/bin"
+fish_add_path ~/.rd/bin
+#set --export --prepend PATH "/Users/scampbell/.rd/bin"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 # Added by LM Studio CLI (lms)

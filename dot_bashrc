@@ -32,6 +32,11 @@ if [ -d "$HOME/.local/share/JetBrains/Toolbox/scripts" ]; then
   export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 fi
 
+# Go bin directory
+if [ -d "$HOME/go/bin" ]; then
+        export PATH="$PATH:$HOME/go/bin"
+fi
+
 # Rancher Desktop
 if [ -d "$HOME/.rd/bin" ]; then
   export PATH="$PATH:$HOME/.rd/bin"
