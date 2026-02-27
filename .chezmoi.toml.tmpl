@@ -59,6 +59,12 @@
 {{-     $work = true -}}
 {{-     $personal = true -}}
 {{-     $shared = false -}}
+{{-   else if contains ".campbells.computer" $fqdn -}}
+{{-     $work = false -}}
+{{-     $shared = true -}}
+{{-   else if contains ".cyberops.bnl.gov" $fqdn -}}
+{{-     $work = true -}}
+{{-     $shared = true -}}
 {{-   else if contains ".nsls2.bnl.local" $fqdn -}}
 {{-     $work = true -}}
 {{-     $shared = true -}}
