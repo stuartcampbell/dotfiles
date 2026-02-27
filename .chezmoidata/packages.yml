@@ -232,6 +232,11 @@ packages:
     brews:
       - "xsel" # X11 selection clipboard (Linux/Xorg only)
       - "p0f" # Passive OS fingerprinting (Linux networking assumptions)
+    debian:
+      - build-essential
+      - vim
+    redhat:
+      - vim
   darwin:
     brews:
       - "mas" # Mac App Store CLI
