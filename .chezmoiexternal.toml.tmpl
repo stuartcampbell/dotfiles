@@ -54,13 +54,13 @@
 
 [".local/bin/nvim"]
     type = "file"
-    url = "https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
+    url = {{ gitHubLatestReleaseAssetURL "neovim/neovim" (printf "nvim-linux-%s.appimage" .chezmoi.arch) | quote }}
     refreshPeriod = "672h"
     executable = true
 
 [".local/bin/eza"]
     type = "archive-file"
-    url = {{ gitHubLatestReleaseAssetURL "eza-community/eza" (printf "eza_%s-unknown-linux-gnu.tar.gz" .chezmoi.arch) | quote }}
+    url = {{ gitHubLatestReleaseAssetURL "eza-community/eza" (printf "eza_%s-unknown-linux-gnu.tar.gz" .chezmoi.config.data.cpu.arch) | quote }}
     executable = true
     path = "./eza"
 
