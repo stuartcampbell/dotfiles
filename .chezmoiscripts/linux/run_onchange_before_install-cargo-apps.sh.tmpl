@@ -12,7 +12,13 @@
   sudo apt install -y automake
 {{ end }}
   
+# Install rustup (which also installs cargo)
+curl https://sh.rustup.rs -sSf | sh
 
+# For now, in order for cargo to be found in this script 
+# we need to manually configure the current shell 
+# (which is bash as we've specified that at the top)
+. "$HOME/.cargo/env"
 
 cargo install jnv   # interactive 'jq'
 
