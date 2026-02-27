@@ -60,7 +60,7 @@
 
 [".local/bin/eza"]
     type = "archive-file"
-    url = {{ gitHubLatestReleaseAssetURL "eza-community/eza" "eza_x86_64-unknown-linux-gnu.tar.gz" | quote }}
+    url = {{ gitHubLatestReleaseAssetURL "eza-community/eza" (printf "eza_%s-unknown-linux-gnu.tar.gz" .chezmoi.arch) | quote }}
     executable = true
     path = "./eza"
 
@@ -68,7 +68,7 @@
     type = "archive-file"
     url = {{ gitHubLatestReleaseAssetURL "dundee/gdu" (printf "gdu_%s_%s.tgz" .chezmoi.os .chezmoi.arch) | quote }}
     executable = true
-    path = "gdu_linux_amd64"
+    path = {{ (printf "gdu_linux_%s" .chezmoi.arch) | quote }}
 
 [".local/share/gnome-shell/extensions/x11gestures@joseexposito.github.io"]
     type = "archive"
