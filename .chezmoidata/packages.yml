@@ -20,6 +20,7 @@ packages:
       - "asdf" # Version manager for ruby, node.js, etc...
       - "ast-grep" # Abstract Syntax Tree based tool for search, lint and rewriting
       - "atac" # Terminal API client
+      - "atuin"   # Shell history
       - "autoconf"
       - "automake"
       - "azcopy"
