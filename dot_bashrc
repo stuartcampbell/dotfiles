@@ -91,7 +91,7 @@ fi
 
 # Try - new directory creator for experiments
 if [ "$(command -v try)" ]; then
-  $TRY_BASE_DIR=~/src/tries
+  TRY_BASE_DIR=~/src/tries
   eval "$(try init $TRY_BASE_DIR)"
 fi 
 
