@@ -6,6 +6,9 @@ if status is-interactive
     uv --generate-shell-completion fish | source
     uvx --generate-shell-completion fish | source
 
+    # Atuin
+    atuin init fish --disable-up-arrow | source
+
     # Automatically "Warpify" subshells
     printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "fish"}}\x9c'
 
