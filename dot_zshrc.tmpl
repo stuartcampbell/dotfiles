@@ -152,6 +152,11 @@ fi
 export KRB5CCNAME=FILE:$HOME/.krb5-ticket
 {{ end }}
 
+# Atuin (with up arrow binding disabled)
+if [ "$(command -v atuin)" ]; then
+  eval "$(atuin init zsh --disable-up-arrow)"
+fi
+
 # Local Aliases
 test -s ~/.aliases && . ~/.aliases || true
 
