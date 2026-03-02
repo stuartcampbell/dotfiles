@@ -280,3 +280,4 @@ packages:
   windows:
     winget:
       - "prefix-dev.pixi"
+      - "tre-command"
