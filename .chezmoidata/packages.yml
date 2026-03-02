@@ -7,8 +7,8 @@ packages:
       - "mongodb/brew"
       - "sinelaw/fresh" # Fresh Editor
       - "TimidRobot/tap" # cmc - ControlMaster Controller
-      - "tobi/try"
-      - "tw93/tap" # Try fresh dirs for every vibe - https://github.com/tobi/try
+      - "tobi/try https://github.com/tobi/try" # Try fresh dirs for every vibe
+      - "tw93/tap"
     common:
       - "ack"
       - "act" # Run GitHub Actions locally
