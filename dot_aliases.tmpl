@@ -80,6 +80,7 @@ alias okta="flatpak run com.okta.developer.CLI"
 alias piv='ssh-add -e /usr/lib/ssh-keychain.dylib; sleep 2; ssh-add -s /usr/lib/ssh-keychain.dylib'
 alias piv-yubi='ssh -e /usr/local/lib/libykcs11.dylib; sleep 1; ssh-add -s /usr/local/lib/libykcs11.dylib'
 {{- end }}
+alias ssh-nsls2="ssh -F ~/.ssh/nsls2.config "
 {{ end }}
 
 # Show what git aliases I have defined
