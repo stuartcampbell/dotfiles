@@ -5,9 +5,10 @@ packages:
       - "charmbracelet/tap"
       - "hashicorp/tap"
       - "mongodb/brew"
-      - "TimidRobot/tap" # cmc - ControlMaster Controller
-      - "tw93/tap"
       - "sinelaw/fresh" # Fresh Editor
+      - "TimidRobot/tap" # cmc - ControlMaster Controller
+      - "tobi/try"
+      - "tw93/tap" # Try fresh dirs for every vibe - https://github.com/tobi/try
     common:
       - "ack"
       - "act" # Run GitHub Actions locally
@@ -188,6 +189,7 @@ packages:
       - "tmux"
       - "tre-command" # Directory hierarchy ('tree' alternative)
       - "tree"
+      - "try" # Fresh directories for every vibe 
       - "twine"
       - "unbound"
       - "uv"
