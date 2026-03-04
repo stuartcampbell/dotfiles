@@ -202,6 +202,7 @@ packages:
       - "wget"
       - "wimlib"
       - "wireshark"
+      - "worktrunk"   # Git Worktree util
       - "xan" # csv tool
       - "xonsh"
       - "yazi"
