@@ -10,7 +10,7 @@ if status is-interactive
     atuin init fish --disable-up-arrow | source
 
     # Try
-    eval (try init ~/src/tries | string collect)
+    eval "(try init | string collect)"
 
     # Automatically "Warpify" subshells
     printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "fish"}}\x9c'
