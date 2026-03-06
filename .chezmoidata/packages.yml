@@ -37,6 +37,7 @@ packages:
       - "ccache"
       - "chafa" # Terminal graphics renderer
       - "chezmoi"
+      - "choose-rust"	# Alternative to cut (maybe awk) https://github.com/theryangeary/choose
       - "cmake"
       - "cmake-docs"
       - "cmatrix"
