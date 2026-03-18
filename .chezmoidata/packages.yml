@@ -265,7 +265,7 @@ packages:
       - "meld"
       - "microsoft-edge"
       - "mockoon"
-      - "ngrok"
+      #- "ngrok"
       - "opensc-app"
       - "orbstack"
       - "postman"
