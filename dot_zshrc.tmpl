@@ -153,6 +153,15 @@ if [ "$(command -v starship)" ]; then
   eval "$(starship init zsh)"
 fi
 
+# bun
+if [ -d "$HOME/.bun" ]; then
+	export BUN_INSTALL="$HOME/.bun"
+	export PATH="$BUN_INSTALL/bin:$PATH"
+
+	# bun completions
+	[ -s "/Users/scampbell/.bun/_bun" ] && source "/Users/scampbell/.bun/_bun"
+fi
+
 {{ if (and (eq .chezmoi.os "darwin") (.work) ) }}
 # Definition to make 'kinit' work on BNL Macs
 export KRB5CCNAME=FILE:$HOME/.krb5-ticket
