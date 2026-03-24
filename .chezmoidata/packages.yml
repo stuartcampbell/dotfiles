@@ -163,6 +163,7 @@ packages:
       - "posting" # Terminal based API browser
       - "procs" # Process viewer (better 'ps')
       - "qemu"
+      - "promptfoo"
       - "ramalama" # local AI tool
       - "rclone" # Rsync for cloud storage
       - "readline"
