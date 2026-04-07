@@ -86,6 +86,7 @@ packages:
       - "git-lfs"
       - "gitui"
       - "glances"
+      - "glow"      # Markdown 'cat' 
       - "gnu-units"
       - "gnupg"
       - "gnuplot"
