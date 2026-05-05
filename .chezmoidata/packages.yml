@@ -246,6 +246,7 @@ packages:
       - vim
   darwin:
     brews:
+      - "bruno-cli" 
       - "mas" # Mac App Store CLI
       - "mlx" # Array framework for Apple Silicon
       - "mlx-lm" # LLMs with MLX
@@ -256,6 +257,7 @@ packages:
       - "1password-cli"
       - "balenaetcher"
       - "block-goose"
+      - "bruno"
       - "deskpad"
       - "google-chrome"
       - "ghostty"
