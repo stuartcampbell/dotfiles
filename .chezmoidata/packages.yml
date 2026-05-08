@@ -1,7 +1,7 @@
 packages:
   homebrew:
     taps:
-      - "anomalyco/tap"  # OpenCode Official Tap
+      - "anomalyco/tap" # OpenCode Official Tap
       - "charmbracelet/tap"
       - "hashicorp/tap"
       - "mongodb/brew"
@@ -21,7 +21,7 @@ packages:
       - "asdf" # Version manager for ruby, node.js, etc...
       - "ast-grep" # Abstract Syntax Tree based tool for search, lint and rewriting
       - "atac" # Terminal API client
-      - "atuin"   # Shell history
+      - "atuin" # Shell history
       - "autoconf"
       - "automake"
       - "azcopy"
@@ -37,7 +37,7 @@ packages:
       - "ccache"
       - "chafa" # Terminal graphics renderer
       - "chezmoi"
-      - "choose-rust"	# Alternative to cut (maybe awk) https://github.com/theryangeary/choose
+      - "choose-rust" # Alternative to cut (maybe awk) https://github.com/theryangeary/choose
       - "cmake"
       - "cmake-docs"
       - "cmatrix"
@@ -86,7 +86,7 @@ packages:
       - "git-lfs"
       - "gitui"
       - "glances"
-      - "glow"      # Markdown 'cat' 
+      - "glow" # Markdown 'cat'
       - "gnu-units"
       - "gnupg"
       - "gnuplot"
@@ -166,6 +166,7 @@ packages:
       - "qemu"
       - "promptfoo"
       - "ramalama" # local AI tool
+      - "rbw" # Alternative BitWarden cli client
       - "rclone" # Rsync for cloud storage
       - "readline"
       - "redis"
@@ -192,7 +193,7 @@ packages:
       - "tmux"
       - "tre-command" # Directory hierarchy ('tree' alternative)
       - "tree"
-      - "try" # Fresh directories for every vibe 
+      - "try" # Fresh directories for every vibe
       - "twine"
       - "unbound"
       - "uv"
@@ -205,7 +206,7 @@ packages:
       - "wget"
       - "wimlib"
       - "wireshark"
-      - "worktrunk"   # Git Worktree util
+      - "worktrunk" # Git Worktree util
       - "xan" # csv tool
       - "xonsh"
       - "yazi"
@@ -246,7 +247,7 @@ packages:
       - vim
   darwin:
     brews:
-      - "bruno-cli" 
+      - "bruno-cli"
       - "mas" # Mac App Store CLI
       - "mlx" # Array framework for Apple Silicon
       - "mlx-lm" # LLMs with MLX
