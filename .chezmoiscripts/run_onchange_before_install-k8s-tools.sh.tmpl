@@ -1,0 +1,8 @@
+{{ if eq .chezmoi.os "linux" "darwin"-}}
+
+#!/bin/bash
+
+# Install ktx (k8s multi-cluser context manager)
+curl -sSL https://github.com/ketches/ktx/raw/master/install.sh | sh
+
+{{ end -}}
