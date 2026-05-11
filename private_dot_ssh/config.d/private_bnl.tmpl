@@ -17,6 +17,16 @@ Host ssh.bnl.gov
     LocalForward 1288 {{$adserver2}}:88
     LocalForward 1388 {{$adserver3}}:88
 
+Host ssh.sdcc.bnl.gov
+  IdentityFile ~/.ssh/id_rsa_sdcc_bnl.pub
+  IdentitiesOnly yes
+{{- if eq .chezmoi.os "darwin" }}
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+{{ end -}}
+{{- if eq .chezmoi.os "linux" }}
+  IdentityAgent ~/.1password/agent.sock
+{{ end -}}
+
 #
 # Office Workstation
 #
