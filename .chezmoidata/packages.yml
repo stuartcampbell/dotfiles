@@ -60,6 +60,7 @@ packages:
       - "duckdb"
       - "duf" # Better "df"
       - "dust"
+      - "dysk" # Another better "df"
       - "entr" # Watch for changes
       - "exiftool"
       - "eza" # Modern replacement for 'ls'
