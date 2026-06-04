@@ -22,6 +22,20 @@
 
 	permission-reset = !git diff -p -R --no-ext-diff --no-color --diff-filter=M | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
 
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+
+
+[delta]
+    side-by-side = true
+
 [branch]
     # Always merge using rebase
     autosetuprebase = always
