@@ -174,7 +174,7 @@ packages:
       - "readline"
       - "redis"
       - "restish" # CLI for REST-ish HTTP APIs
-      - "resvg"  SVG rendering library - yazi uses for svg preview
+      - "resvg" # SVG rendering library - yazi uses for svg preview
       - "rig" # Random Identity Generator
       - "rip2" # Safer alternative to 'rm'
       - "ripgrep"
