@@ -1,6 +1,9 @@
 packages:
   homebrew:
     taps:
+      - "anchore/grant"   # License Scanner
+      - "anchore/grype"   # Vulnerability Scanner
+      - "anchore/syft"   # SBOM generator
       - "anomalyco/tap" # OpenCode Official Tap
       - "charmbracelet/tap"
       - "hashicorp/tap"
@@ -95,6 +98,7 @@ packages:
       - "gnutls"
       - "govc" # CLI for VMware vSphere
       - "grace"
+      - "grant"		# License scaner
       - "graphviz"
       - "grex" # Regex creator
       - "grype" # Vulnerability scanner for containers and filesystems
