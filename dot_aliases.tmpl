@@ -14,6 +14,7 @@ if [[ $OSTYPE == darwin* ]]; then
     alias l.="$LS_CMD -d .*"
     alias ll="$LS_CMD -lh"
     alias ls="$LS_CMD"
+    alias vpncyber="osascript ~/scripts/vpn-cyber.applescript"
 elif [[ $OSTYPE == linux* ]]; then
     alias l.="$LS_CMD -d .* --color=auto"
     alias ll="$LS_CMD -lh --color=auto"
@@ -95,7 +96,7 @@ alias isd-tui="uvx --python=3.12 isd-tui"
 
 {{ if eq .chezmoi.os "darwin" }}
 alias unquarantine="xattr -d com.apple.quarantine "
-{{ end }} 
+{{ end }}
 
 # Clean up local branches where remote has "gone".
 # TODO: Fix this, doesn't currently work correctly
