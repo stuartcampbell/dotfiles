@@ -196,7 +196,7 @@ packages:
       - "talosctl"
       - "telnet"
       - "temporal" # CLI for Temporal server
-      - "tldr"
+      # - "tldr"  # Using tealdeer instead
       - "the_silver_searcher"
       - "tmux"
       - "tre-command" # Directory hierarchy ('tree' alternative)
