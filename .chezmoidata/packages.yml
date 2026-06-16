@@ -31,6 +31,7 @@ packages:
       - "azure-cli"
       - "bandwhich" # Bandwidth monitor
       - "bat" #Better cat
+      - "beets"     # Music tagger and library
       - "bitwarden-cli"
       - "black"
       - "blake3" # C implementation of BLAKE3 crypto hash function
