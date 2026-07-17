@@ -18,5 +18,10 @@ cask {{ . | quote }}
 {{ range .packages.darwin.mas -}}
 mas {{ . }}
 {{ end -}}
+{{ if not .work }}
+{{ range .packages.darwin.mas_personal -}}
+mas {{ . }}
+{{ end -}}
+{{ end -}}
 EOF
 {{ end -}}

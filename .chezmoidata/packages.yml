@@ -295,6 +295,7 @@ packages:
     mas:
       - "'Magnet', id: 441258766"
       - "'Windows', id: 1295203466" # Previously Remote Desktop
+    mas_personal:
       - "'Tailscale', id: 1475387142"
   windows:
     winget:
