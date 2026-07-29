@@ -1,0 +1,334 @@
+#!/usr/bin/env bash
+# pemdecompose — List certificates in a combined PEM file.
+#
+# Walks a PEM file containing one or more X.509 certificates (with or
+# without blank lines or other text between PEM blocks) and prints the
+# subject, issuer, and signature algorithm of each. Optionally verifies
+# that adjacent certs form a chain in file order.
+#
+# Private-key blocks in a combined file (e.g. server.combined.pem from
+# the acme_certificates Ansible role) are skipped automatically; only
+# CERTIFICATE blocks are inspected.
+#
+# Requires: openssl
+#
+# Usage:
+#   pemdecompose [options] FILE [FILE...]
+#   pemdecompose --help
+#
+# Options:
+#   -h, --help     Show this help and exit
+#       --verify   Verify each cert is issued by the next cert in the
+#                  file (signature + issuer/subject DN match).
+#   -q, --quiet    Suppress the per-file banner and inter-file blank
+#                  line when multiple files are given.
+#       --no-color Disable ANSI colour. Colour is also disabled
+#                  automatically when stdout is not a TTY or when the
+#                  NO_COLOR environment variable is set.
+#
+# Exit codes:
+#   0  success
+#   1  usage error
+#   2  no certificates found in at least one input file
+#   3  openssl parse error on at least one input file
+#   4  --verify failed for at least one chain link
+
+set -euo pipefail
+
+PROG="pemdecompose"
+
+usage() {
+    sed -n '2,/^$/p' "$0" | sed -e 's/^# \{0,1\}//'
+}
+
+die() {
+    printf '%s: %s\n' "$PROG" "$*" >&2
+    exit 1
+}
+
+warn() {
+    printf '%s: %s\n' "$PROG" "$*" >&2
+}
+
+# --- arg parsing --------------------------------------------------------
+
+VERIFY=0
+QUIET=0
+NO_COLOR_FLAG=0
+FILES=()
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        --verify)
+            VERIFY=1
+            shift
+            ;;
+        -q | --quiet)
+            QUIET=1
+            shift
+            ;;
+        --no-color | --no-colour)
+            NO_COLOR_FLAG=1
+            shift
+            ;;
+        --)
+            shift
+            while [[ $# -gt 0 ]]; do
+                FILES+=("$1")
+                shift
+            done
+            ;;
+        -*)
+            die "unknown option: $1 (try --help)"
+            ;;
+        *)
+            FILES+=("$1")
+            shift
+            ;;
+    esac
+done
+
+if [[ ${#FILES[@]} -eq 0 ]]; then
+    die "no input file (try --help)"
+fi
+
+# --- colour setup -------------------------------------------------------
+
+if [[ $NO_COLOR_FLAG -eq 0 ]] && [[ -z "${NO_COLOR:-}" ]] && [[ -t 1 ]]; then
+    C_RESET=$'\e[0m'
+    C_BOLD=$'\e[1m'
+    C_DIM=$'\e[2m'
+    C_CYAN=$'\e[36m'
+    C_GREEN=$'\e[32m'
+    C_RED=$'\e[31m'
+else
+    C_RESET=""
+    C_BOLD=""
+    C_DIM=""
+    C_CYAN=""
+    C_GREEN=""
+    C_RED=""
+fi
+
+# --- temp dir for --verify ----------------------------------------------
+
+TMPDIR_=""
+# shellcheck disable=SC2329  # invoked via trap below
+cleanup() {
+    if [[ -n "$TMPDIR_" ]]; then
+        rm -rf -- "$TMPDIR_"
+    fi
+    return 0
+}
+trap cleanup EXIT INT TERM HUP
+
+ensure_tmpdir() {
+    if [[ -z "$TMPDIR_" ]]; then
+        TMPDIR_=$(mktemp -d -t pemdecompose.XXXXXX)
+    fi
+}
+
+# --- helpers ------------------------------------------------------------
+
+# Split a PEM file into NUL-separated CERTIFICATE blocks on stdout.
+split_certs() {
+    local file="$1"
+    awk '
+        /-----BEGIN CERTIFICATE-----/ { in_cert = 1; buf = "" }
+        in_cert { buf = buf $0 ORS }
+        /-----END CERTIFICATE-----/ {
+            if (in_cert) {
+                printf "%s%c", buf, 0
+                in_cert = 0
+                buf = ""
+            }
+        }
+    ' "$file"
+}
+
+# Print just the subject DN (everything after "subject=").
+cert_subject_only() {
+    openssl x509 -noout -subject -nameopt RFC2253 2> /dev/null |
+          sed -e 's/^subject=//'
+}
+
+# Print just the issuer DN.
+cert_issuer_only() {
+    openssl x509 -noout -issuer -nameopt RFC2253 2> /dev/null |
+          sed -e 's/^issuer=//'
+}
+
+# Print the top-level Signature Algorithm name (e.g. ecdsa-with-SHA384,
+# sha256WithRSAEncryption, ED25519). Returns nonzero if openssl can't
+# parse the block.
+cert_sigalg() {
+    openssl x509 -noout -text 2> /dev/null |
+          awk '/Signature Algorithm:/ {
+                  sub(/^.*Signature Algorithm:[[:space:]]*/, "")
+                  print; exit
+              }'
+}
+
+# --- per-file processing ------------------------------------------------
+
+process_file() {
+    local file="$1"
+    local show_banner="$2"
+
+    if [[ ! -r "$file" ]]; then
+        warn "cannot read: $file"
+        return 3
+    fi
+
+    if [[ "$show_banner" -eq 1 ]]; then
+        printf '%s== %s ==%s\n' "$C_BOLD$C_CYAN" "$file" "$C_RESET"
+    fi
+
+    # Read all cert blocks into an array.
+    local -a blocks=()
+    local block
+    while IFS= read -r -d '' block; do
+        blocks+=("$block")
+    done < <(split_certs "$file")
+
+    local count=${#blocks[@]}
+
+    if [[ $count -eq 0 ]]; then
+        warn "no certificates found in $file"
+        return 2
+    fi
+
+    # Emit subject + issuer + sigalg per cert.
+    local i
+    for ((i = 0; i < count; i++)); do
+        local idx=$((i + 1))
+        local sub iss sigalg
+        if ! sub=$(printf '%s' "${blocks[$i]}" | cert_subject_only); then
+            warn "openssl failed to parse certificate #$idx in $file"
+            return 3
+        fi
+        if ! iss=$(printf '%s' "${blocks[$i]}" | cert_issuer_only); then
+            warn "openssl failed to parse certificate #$idx in $file"
+            return 3
+        fi
+        if ! sigalg=$(printf '%s' "${blocks[$i]}" | cert_sigalg); then
+            warn "openssl failed to parse certificate #$idx in $file"
+            return 3
+        fi
+        [[ -z "$sigalg" ]] && sigalg="<unknown>"
+        printf '%s%2d%s  %ssubject:%s %s\n' \
+            "$C_BOLD" "$idx" "$C_RESET" "$C_DIM" "$C_RESET" "$sub"
+        printf '      %sissuer :%s %s\n' \
+            "$C_DIM" "$C_RESET" "$iss"
+        printf '      %ssigalg :%s %s\n' \
+            "$C_DIM" "$C_RESET" "$sigalg"
+    done
+
+    printf '%s%d certificate(s)%s\n' "$C_DIM" "$count" "$C_RESET"
+
+    if [[ $VERIFY -eq 1 ]]; then
+        printf '\n%sverify:%s\n' "$C_BOLD" "$C_RESET"
+        if [[ $count -eq 1 ]]; then
+            printf '  chain: %sN/A (single certificate)%s\n' \
+                "$C_DIM" "$C_RESET"
+            return 0
+        fi
+
+        ensure_tmpdir
+        local link_ok=1
+
+        # Write each block to a temp file once.
+        local -a cert_files=()
+        local j
+        for ((j = 0; j < count; j++)); do
+            local f
+            f="$TMPDIR_/$(basename -- "$file").cert.$((j + 1)).pem"
+            printf '%s' "${blocks[$j]}" > "$f"
+            cert_files+=("$f")
+        done
+
+        for ((j = 0; j < count - 1; j++)); do
+            local cur_idx=$((j + 1))
+            local nxt_idx=$((j + 2))
+            local cur="${cert_files[$j]}"
+            local nxt="${cert_files[$((j + 1))]}"
+
+            local cur_issuer nxt_subject
+            cur_issuer=$(printf '%s' "${blocks[$j]}" | cert_issuer_only) || true
+            nxt_subject=$(printf '%s' "${blocks[$((j + 1))]}" |
+                  cert_subject_only) || true
+
+            local dn_ok=0
+            if [[ -n "$cur_issuer" && "$cur_issuer" == "$nxt_subject" ]]; then
+                dn_ok=1
+            fi
+
+            local sig_ok=0
+            if openssl verify -no_check_time -partial_chain \
+                -CAfile "$nxt" "$cur" > /dev/null 2>&1; then
+                sig_ok=1
+            fi
+
+            if [[ $dn_ok -eq 1 && $sig_ok -eq 1 ]]; then
+                printf '  %d -> %d  %sOK%s   (signature + issuer DN match)\n' \
+                    "$cur_idx" "$nxt_idx" "$C_GREEN" "$C_RESET"
+            else
+                link_ok=0
+                local reason=""
+                if [[ $dn_ok -eq 0 && $sig_ok -eq 0 ]]; then
+                    reason="DN mismatch and signature mismatch"
+                elif [[ $dn_ok -eq 0 ]]; then
+                    reason="issuer DN mismatch"
+                else
+                    reason="signature mismatch"
+                fi
+                printf '  %d -> %d  %sFAIL%s (%s)\n' \
+                    "$cur_idx" "$nxt_idx" "$C_RED" "$C_RESET" "$reason"
+            fi
+        done
+
+        # Last cert: informational only.
+        printf '  %d       %stail (no parent in file)%s\n' \
+            "$count" "$C_DIM" "$C_RESET"
+
+        if [[ $link_ok -eq 1 ]]; then
+            printf 'chain: %sPASS%s\n' "$C_GREEN" "$C_RESET"
+            return 0
+        else
+            printf 'chain: %sFAIL%s\n' "$C_RED" "$C_RESET"
+            return 4
+        fi
+    fi
+
+    return 0
+}
+
+# --- main loop ----------------------------------------------------------
+
+show_banner=0
+if [[ ${#FILES[@]} -gt 1 && $QUIET -eq 0 ]]; then
+    show_banner=1
+fi
+
+worst_rc=0
+first=1
+for file in "${FILES[@]}"; do
+    if [[ $first -eq 0 && $QUIET -eq 0 && $show_banner -eq 1 ]]; then
+        printf '\n'
+    fi
+    first=0
+
+    rc=0
+    process_file "$file" "$show_banner" || rc=$?
+
+    # Propagate the worst exit code seen.
+    if [[ $rc -gt $worst_rc ]]; then
+        worst_rc=$rc
+    fi
+done
+
+exit "$worst_rc"
