@@ -1,5 +1,8 @@
 shell-integration = detect
 copy-on-select = true
+
+macos-option-as-alt = left
+
 theme = Dracula
 palette = 0=#22212C
 palette = 1=#FF9580
