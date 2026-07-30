@@ -25,6 +25,10 @@ fi
 alias vnv="uv venv --python 3.14 --python-preference only-managed venv && source venv/bin/activate"
 alias vnv312="uv venv --python 3.12 --python-preference only-managed venv && source venv/bin/activate"
 
+# Venv security whitelist/blocklist
+alias venv-security='uv run -q --no-project ~/scripts/venv-security.py'
+alias vnvsec='uv run -q --no-project ~/scripts/venv-security.py'
+
 if [ "$(command -v nvim)" ]; then
     alias vi=nvim
     export EDITOR=nvim
