@@ -31,6 +31,7 @@ packages:
       - "azure-cli"
       - "bandwhich" # Bandwidth monitor
       - "bat" #Better cat
+      - "bbrew" 
       - "beets"     # Music tagger and library
       - "bitwarden-cli"
       - "black"
