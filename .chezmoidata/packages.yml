@@ -154,7 +154,6 @@ packages:
       - "nasm"
       - "navi" # Interactive cheat sheets
       - "ncdu"
-      - "neofetch"
       - "neovim"
       - "ninja"
       - "nmap"
