@@ -4,7 +4,7 @@ packages:
       - "anchore/grant"   # License Scanner
       - "anchore/grype"   # Vulnerability Scanner
       - "anchore/syft"   # SBOM generator
-      - "anomalyco/tap" # OpenCode Official Tap
+      #- "anomalyco/tap" # OpenCode Official Tap (using mise install instead)
       - "charmbracelet/tap"
       - "hashicorp/tap"
       - "mongodb/brew"
