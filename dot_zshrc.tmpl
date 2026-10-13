@@ -165,6 +165,11 @@ if [ -d "$HOME/.bun" ]; then
 	[ -s "/Users/scampbell/.bun/_bun" ] && source "/Users/scampbell/.bun/_bun"
 fi
 
+# bifrost-cli
+if [ -d "$HOME/.bifrost/bin" ]; then
+  export PATH="$HOME/.bifrost/bin:$PATH"
+fi
+
 {{ if (and (eq .chezmoi.os "darwin") (.work) ) }}
 # Definition to make 'kinit' work on BNL Macs
 export KRB5CCNAME=FILE:$HOME/.krb5-ticket
