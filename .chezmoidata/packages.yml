@@ -28,7 +28,6 @@ packages:
       - "autoconf"
       - "automake"
       - "azcopy"
-      - "azure-cli"
       - "bandwhich" # Bandwidth monitor
       - "bat" #Better cat
       - "bbrew" 
@@ -265,6 +264,7 @@ packages:
       - "xq" # macOS-only wrapper (jq + XML tooling)
     casks:
       - "1password-cli"
+      - "azure-cli"
       - "balenaetcher"
       - "block-goose"
       - "bruno"
