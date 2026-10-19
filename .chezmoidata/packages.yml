@@ -4,6 +4,7 @@ packages:
       - "anchore/grant"   # License Scanner
       - "anchore/grype"   # Vulnerability Scanner
       - "anchore/syft"   # SBOM generator
+      - "azure/azd"       # Azure Developer CLI
       #- "anomalyco/tap" # OpenCode Official Tap (using mise install instead)
       - "charmbracelet/tap"
       - "hashicorp/tap"
@@ -264,6 +265,7 @@ packages:
       - "xq" # macOS-only wrapper (jq + XML tooling)
     casks:
       - "1password-cli"
+      - "azure/azd/azd"
       - "azure-cli"
       - "balenaetcher"
       - "block-goose"
